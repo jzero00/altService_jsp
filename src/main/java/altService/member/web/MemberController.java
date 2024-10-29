@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import altService.exception.LoginFailException;
 import altService.member.service.MemberService;
 import altService.member.service.MemberVO;
 
@@ -44,6 +45,9 @@ public class MemberController {
 			String url = rootView + "loginSuccess";
 			mnv.setViewName(url);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LoginFailException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
