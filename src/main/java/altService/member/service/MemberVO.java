@@ -71,6 +71,4 @@ public class MemberVO {
 		return "MemberVO [altNo=" + altNo + ", memNm=" + memNm + ", pwd=" + pwd + ", serSdt=" + serSdt + ", serEdt="
 				+ serEdt + ", deptNo=" + deptNo + ", memNo=" + memNo + "]";
 	}
-	
-	
 }

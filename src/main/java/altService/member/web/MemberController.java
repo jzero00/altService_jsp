@@ -2,6 +2,9 @@ package altService.member.web;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import altService.exception.LoginFailException;
 import altService.member.service.MemberService;
 import altService.member.service.MemberVO;
 
@@ -32,20 +34,21 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login.do")
-	public ModelAndView postLogin(ModelAndView mnv, MemberVO vo) {
+	public ModelAndView postLogin(ModelAndView mnv, MemberVO vo, HttpServletRequest req) {
 		
-		MemberVO session = null;
+		MemberVO loginUser = null;
 		try {
-			session = mService.login(vo);
+			loginUser = mService.login(vo);
+			HttpSession session = req.getSession();
+			session.setAttribute("loginUser", loginUser);
+			String url = rootView + "loginSuccess";
+			mnv.setViewName(url);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LoginFailException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if(session != null) System.out.println("로그인 성공");
+		if(loginUser != null) System.out.println("로그인 성공");
 		
 		return mnv;
 		

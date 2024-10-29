@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import altService.exception.LoginFailException;
 import altService.member.service.MemberService;
 import altService.member.service.MemberVO;
 
@@ -16,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mMapper;
 	
 	@Override
-	public MemberVO login(MemberVO vo) throws SQLException, LoginFailException {
+	public MemberVO login(MemberVO vo) throws SQLException {
 		MemberVO member = null;
 		member = mMapper.login(vo);
 		System.out.println(member.toString());
