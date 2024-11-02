@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="altService.sys.menuManage.service.impl.MenuManageMapper">
+
+	<insert id="insertMenuManage" parameterType="menuManage">
+		INSERT INTO	altservice.comtnmenuinfo
+		(MENU_NM, PROGRM_FILE_NM, MENU_NO,UPPER_MENU_NO, MENU_ORDR, MENU_DC,RELATE_IMAGE_PATH, RELATE_IMAGE_NM)
+		VALUES
+		(#{menu_nm}, #{progrm_file_nm}, #{menu_no}, #{upper_menu_no}, #{menu_ordr}, #{menu_dc}, #{relate_image_path}, #{relate_image_nm})
+	</insert>
+
+</mapper>

@@ -1,4 +1,4 @@
-package altService.member.service;
+package altService.sys.member.service;
 
 public class MemberVO {
 

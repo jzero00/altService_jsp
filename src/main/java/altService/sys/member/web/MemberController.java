@@ -1,4 +1,4 @@
-package altService.member.web;
+package altService.sys.member.web;
 
 import java.sql.SQLException;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import altService.exception.LoginFailException;
-import altService.member.service.MemberService;
-import altService.member.service.MemberVO;
+import altService.sys.member.service.MemberService;
+import altService.sys.member.service.MemberVO;
 
 @RequestMapping("/member")
 @Controller

@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Diebock</title>
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
+<script>
+function insertMenuList(){
+	document.menuManageVO.action = "<c:url value='/sys/menuRegView.do'/>";
+	menuManageVO.submit();
+}
+</script>
 </head>
 <body>
+<section class="content">
+	<div class="container-fluid">
 	<table class="table">
 		<tr>
 			<th>
@@ -24,7 +33,7 @@
 						<div class="btn-group">
 							<button type="button" class="btn bg-gradient-primary">조회</button>
 							<button type="button" class="btn bg-gradient-primary">일괄등록</button>
-							<button type="button" class="btn bg-gradient-primary">등록</button>
+							<button type="button" class="btn bg-gradient-primary" onclick="insertMenuList(); return false;">등록</button>
 							<button type="button" class="btn bg-gradient-primary">삭제</button>
 						</div>
 					</div>
@@ -54,5 +63,9 @@
 			</tr>
 		</tbody>
 	</table>
+	<form name="menuManageVO" action ="<c:url value='/sys/menuRegView.do' />" method="post">
+	</form>
+	</div>
+</section>
 </body>
 </html>
