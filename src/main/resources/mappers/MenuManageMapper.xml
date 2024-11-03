@@ -29,5 +29,18 @@
 		AND
 		menu_no = #{menu_no}
 	</select>
+	
+	<update id="updateMenuManage" parameterType="menuManage">
+		UPDATE altservice.comtnmenuinfo
+		SET
+		MENU_NM = #{menu_nm},
+		PROGRM_FILE_NM = #{progrm_file_nm},
+		UPPER_MENU_NO = #{upper_menu_no},
+		MENU_ORDR = #{menu_ordr},
+		MENU_DC = #{menu_dc},
+		RELATE_IMAGE_PATH = #{relate_image_path},
+		RELATE_IMAGE_NM = #{relate_image_nm}
+		WHERE MENU_NO = #{menu_no} 
+	</update>
 
 </mapper>

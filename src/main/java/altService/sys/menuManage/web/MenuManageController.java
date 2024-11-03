@@ -106,4 +106,19 @@ public class MenuManageController {
 		
 		return mnv;
 	}
+	
+	@RequestMapping("menuMod.do")
+	public ModelAndView menuMod(ModelAndView mnv, MenuManageVO vo) {
+		Map<String,Object> paramMap = new HashMap<>();
+		String url = rootPath + "menuManageMessage";
+		paramMap.put("vo", vo);
+		try {
+			mService.modifyMenuManage(paramMap);
+			mnv.setViewName(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mnv;
+	}
 }

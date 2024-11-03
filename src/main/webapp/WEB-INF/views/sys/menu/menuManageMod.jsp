@@ -70,10 +70,10 @@ function listMenu(){
 						<div class="form-group">
 							<div class="row">
 								<div class="col-2">
-									<label for="file_nm" class="col-form-label">파일명 *</label>
+									<label for="progrm_file_nm" class="col-form-label">파일명 *</label>
 								</div>
 								<div class="col-10">
-									<input type="text" class="form-control" name="file_nm">
+									<input type="text" class="form-control" name="progrm_file_nm">
 								</div>
 							</div>
 						</div>

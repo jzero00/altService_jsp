@@ -17,5 +17,7 @@ public interface MenuManageMapper {
 	public List<MenuManageVO> selectMenuList() throws SQLException;
 	
 	public MenuManageVO selectMenuManageDetail(String menu_no) throws SQLException;
+
+	public void updateMenuManage(MenuManageVO vo) throws SQLException;
 	
 }

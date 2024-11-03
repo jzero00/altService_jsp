@@ -55,4 +55,10 @@ public class MenuManageServiceImpl implements MenuManageService {
 		return dataMap;
 	}
 
+	@Override
+	public void modifyMenuManage(Map<String, Object> paramMap) throws SQLException {
+		MenuManageVO vo = (MenuManageVO) paramMap.get("vo");
+		mMapper.updateMenuManage(vo);
+	}
+
 }
