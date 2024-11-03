@@ -36,7 +36,7 @@ function listMenu(){
 									<label for="menu_no" class="col-form-label">메뉴No *</label>
 								</div>
 								<div class="col-4">
-									<input type="text" class="form-control" name="menu_no">
+									<input type="text" class="form-control" name="menu_no" readonly="readonly">
 								</div>
 								<div class="col-2">
 									<label for="menu_ordr" class="col-form-label">메뉴순서 *</label>

@@ -4,7 +4,7 @@ public class MenuManageVO {
 
 	private String menu_nm;
 	private String progrm_file_nm;
-	private int menu_no;
+	private String menu_no;
 	private int upper_menu_no;
 	private int menu_ordr;
 	private String menu_dc;
@@ -27,11 +27,11 @@ public class MenuManageVO {
 		this.progrm_file_nm = progrm_file_nm;
 	}
 
-	public int getMenu_no() {
+	public String getMenu_no() {
 		return menu_no;
 	}
 
-	public void setMenu_no(int menu_no) {
+	public void setMenu_no(String menu_no) {
 		this.menu_no = menu_no;
 	}
 

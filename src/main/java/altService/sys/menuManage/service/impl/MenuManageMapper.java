@@ -12,6 +12,8 @@ public interface MenuManageMapper {
 
 	public void insertMenuManage(MenuManageVO vo) throws SQLException;
 	
+	public String selectUpperMenuNoByMenuOrdr(String upper_menu_no) throws SQLException;
+	
 	public List<MenuManageVO> selectUpperMenuNoByMenuNm(String keyword) throws SQLException;
 	
 	public List<MenuManageVO> selectMenuList() throws SQLException;
