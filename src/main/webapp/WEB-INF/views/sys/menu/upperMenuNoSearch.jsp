@@ -5,6 +5,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
+<script>
+function upperMenuNoSearch(){
+	let keyword = document.querySelector("input[id=menu]").value;
+	$.ajax({
+		url : 'upperMenuNoSearch.do',
+		type : 'post',
+		data : {'keyword' : keyword},
+		contentType: "application/json;charset=UTF-8",
+		dataType : "text",
+		success : function(data){
+			console.log(data);
+		}
+	})
+}
+</script>
 </head>
 <body>
 	<section class="content">

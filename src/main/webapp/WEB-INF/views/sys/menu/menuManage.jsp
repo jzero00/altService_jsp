@@ -11,6 +11,12 @@ function insertMenuList(){
 	document.menuManageVO.action = "<c:url value='/sys/menuRegView.do'/>";
 	menuManageVO.submit();
 }
+
+function menuManageMod(e){
+	document.menuManageVO.action = "<c:url value='/sys/menuModView.do'/>";
+	document.menuManageVO.querySelector("input[id=menu_no]").value = e.id;
+	menuManageVO.submit();
+}
 </script>
 </head>
 <body>
@@ -53,17 +59,20 @@ function insertMenuList(){
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><input type="checkbox"></td>
-				<td>0</td>
-				<td>root</td>
-				<td>dir</td>
-				<td>root</td>
-				<td>0</td>
-			</tr>
+			<c:forEach items="${list }" var="list">
+				<tr id="${list.menu_no }" onclick="menuManageMod(this); return false;">
+					<td><input type="checkbox"></td>
+					<td>${list.menu_no }</td>
+					<td>${list.menu_nm }</td>
+					<td>${list.progrm_file_nm }</td>
+					<td>${list.menu_dc }</td>
+					<td>${list.upper_menu_no }</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	<form name="menuManageVO" action ="<c:url value='/sys/menuRegView.do' />" method="post">
+		<input type="hidden" id="menu_no" name="menu_no">
 	</form>
 	</div>
 </section>

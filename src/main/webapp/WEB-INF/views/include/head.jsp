@@ -22,5 +22,9 @@
 <link rel="stylesheet" href="${request.getContextPath() }/resources/plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="${request.getContextPath() }/resources/plugins/summernote/summernote-bs4.min.css">
+<!-- jQuery -->
+<script src="${request.getContextPath() }/resources/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="${request.getContextPath() }/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
 </head>
 </html>

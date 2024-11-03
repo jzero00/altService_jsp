@@ -13,7 +13,7 @@ function registMenu(){
 }
 
 function open_upper_menu_no(){
-	window.open("/sys/upperMenuNoSearch.do","popup","width=400, height=500, history=no, resizable=no, status=no, scrollbars=yes, menubar=no");
+	window.open("/sys/upperMenuNoSearchView.do","popup","width=400, height=500, history=no, resizable=no, status=no, scrollbars=yes, menubar=no");
 }
 
 function listMenu(){
