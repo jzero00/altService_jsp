@@ -12,6 +12,6 @@ public interface MenuManageService {
 	
 	public List<MenuManageVO> getUpperMenuNoByMenuNm(String keyword) throws SQLException;
 
-	public Map<String, Object> getMenuManage(Map<String, Object> paramMap) throws SQLException;
+	public Map<String, Object> getMenuManageDetail(Map<String, Object> paramMap) throws SQLException;
 	
 }

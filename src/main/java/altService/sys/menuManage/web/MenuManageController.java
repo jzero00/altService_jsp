@@ -19,6 +19,7 @@ import altService.sys.menuManage.service.MenuManageVO;
 public class MenuManageController {
 	
 	private String rootPath = "/sys/menu/";
+	private String tilesSuffix = ".page";
 	
 	@Autowired
 	private MenuManageService mService;
@@ -26,7 +27,7 @@ public class MenuManageController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("menuManage.do")
 	public ModelAndView menuManage(ModelAndView mnv) {
-		String url = rootPath + "menuManage";
+		String url = rootPath + "menuManage" + tilesSuffix;
 		Map<String,Object> dataMap = null;
 		try {
 			dataMap = mService.getMenuMangeList();
@@ -45,7 +46,7 @@ public class MenuManageController {
 	
 	@RequestMapping("menuRegView.do")
 	public ModelAndView menuManageView(ModelAndView mnv) {
-		String url = rootPath + "menuManageReg";
+		String url = rootPath + "menuManageReg" + tilesSuffix;
 		mnv.setViewName(url);
 		return mnv;
 	}
@@ -87,13 +88,15 @@ public class MenuManageController {
 	}
 	
 	@RequestMapping("menuModView.do")
-	public ModelAndView menuModView(ModelAndView mnv, int menu_no) {
-		String url = rootPath + "menuManageMod";
+	public ModelAndView menuModView(ModelAndView mnv, String menu_no) {
+		String url = rootPath + "menuManageMod" + tilesSuffix;
 		Map<String,Object> dataMap = null;
 		Map<String,Object> paramMap = new HashMap<>();
 		
+		paramMap.put("menu_no", menu_no);
+		
 		try {
-			dataMap = mService.getMenuManage(paramMap);
+			dataMap = mService.getMenuManageDetail(paramMap);
 			mnv.addAllObjects(dataMap);
 			mnv.setViewName(url);
 		} catch (SQLException e) {

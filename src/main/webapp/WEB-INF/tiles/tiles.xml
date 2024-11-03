@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd" >
+<tiles-definitions>
+
+	<!-- template s -->
+	<!-- tiles 적용 -->
+	<definition name="tilesLayout" template="/WEB-INF/views/layout/TilesLayout.jsp">
+		<put-attribute name="title" value="Diebock 관리시스템" />
+		<put-attribute name="head" value="/WEB-INF/views/include/head.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/views/include/sidebar.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp" />		
+<!-- 		<put-attribute name="navbar" value="/WEB-INF/views/include/navbar.jsp" /> -->
+	</definition>
+	
+<!-- 	<definition name="tilesLayout1d" template="/WEB-INF/views/layout/TilesLayout1d.jsp"> -->
+<!-- 		<put-attribute name="title" value="JINOSYS 통합안전관리시스템" /> -->
+<!-- 		<put-attribute name="head" value="/WEB-INF/views/include/head.jsp" /> -->
+<!-- 		<put-attribute name="header" value="/WEB-INF/views/include/header.jsp" /> -->
+<!-- 		<put-attribute name="navbar" value="/WEB-INF/views/include/navbar.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="notiles" template="/WEB-INF/views/layout/notiles.jsp"> -->
+<!-- 		<put-attribute name="title" value="JINOSYS 통합안전관리시스템" /> -->
+<!-- 	</definition> -->
+	
+	<!-- template e -->
+	
+	
+<!-- 	<definition name="/*/*.page" extends="tilesLayout"> -->
+<!-- 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" /> -->
+<!-- 	</definition> -->
+	
+	<definition name="/*/*/*.page" extends="tilesLayout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<!-- 타일즈 미적용 정의 -->
+<!-- 	<definition name="*.notiles*" extends="notiles"> -->
+<!-- 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="*/*.notiles*" extends="notiles"> -->
+<!-- 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" /> -->
+<!-- 	</definition> -->
+<!-- 	<definition name="*/*/*.notiles*" extends="notiles"> -->
+<!-- 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp" /> -->
+<!-- 	</definition> -->
+
+
+	
+	<!-- tiles 미 적용 -->
+<!-- 	<definition name="normalLayout" template="/WEB-INF/views/layout/NoramlLayout.jsp"> -->
+<!-- 		<put-attribute name="NormalLayout" value="" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="*.jsp" extends="normalLayout"> -->
+<!-- 		<put-attribute name="normalLayout" value="/WEB-INF/views/{1}.jsp" /> -->
+<!-- 	</definition> -->
+
+  
+</tiles-definitions>

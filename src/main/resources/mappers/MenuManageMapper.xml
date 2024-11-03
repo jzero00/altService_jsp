@@ -22,7 +22,7 @@
 		FROM altservice.comtnmenuinfo
 	</select>
 	
-	<select id="selectMenuManageDetail" parameterType="str" resultType="menuManage">
+	<select id="selectMenuManageDetail" resultType="menuManage">
 		SELECT *
 		FROM altservice.comtnmenuinfo
 		WHERE 1=1 

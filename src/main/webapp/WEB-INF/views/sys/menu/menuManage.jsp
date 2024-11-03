@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Diebock</title>
-<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/include/head.jsp"%> --%>
 <script>
 function insertMenuList(){
 	document.menuManageVO.action = "<c:url value='/sys/menuRegView.do'/>";
@@ -72,7 +72,7 @@ function menuManageMod(e){
 		</tbody>
 	</table>
 	<form name="menuManageVO" action ="<c:url value='/sys/menuRegView.do' />" method="post">
-		<input type="hidden" id="menu_no" name="menu_no">
+		<input type="hidden" id="menu_no" name="menu_no" value="">
 	</form>
 	</div>
 </section>

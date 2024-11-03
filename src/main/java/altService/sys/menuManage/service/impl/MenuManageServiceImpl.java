@@ -43,7 +43,7 @@ public class MenuManageServiceImpl implements MenuManageService {
 	}
 
 	@Override
-	public Map<String, Object> getMenuManage(Map<String, Object> paramMap) throws SQLException {
+	public Map<String, Object> getMenuManageDetail(Map<String, Object> paramMap) throws SQLException {
 		Map<String,Object> dataMap = new HashMap<>();
 		String menu_no = (String) paramMap.get("menu_no");
 		MenuManageVO vo = null;

@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Diebock</title>
-<%@ include file="/WEB-INF/views/include/head.jsp"%>
 <script>
 function registMenu(){
 	document.menuManageVO.action = "<c:url value="/sys/menuReg.do"/>";

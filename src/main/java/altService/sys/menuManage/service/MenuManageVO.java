@@ -75,4 +75,11 @@ public class MenuManageVO {
 		this.relate_image_nm = relate_image_nm;
 	}
 
+	@Override
+	public String toString() {
+		return "MenuManageVO [menu_nm=" + menu_nm + ", progrm_file_nm=" + progrm_file_nm + ", menu_no=" + menu_no
+				+ ", upper_menu_no=" + upper_menu_no + ", menu_ordr=" + menu_ordr + ", menu_dc=" + menu_dc
+				+ ", relate_image_path=" + relate_image_path + ", relate_image_nm=" + relate_image_nm + "]";
+	}
+
 }
