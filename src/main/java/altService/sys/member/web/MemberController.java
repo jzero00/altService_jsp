@@ -16,7 +16,7 @@ import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberService;
 import altService.sys.member.service.MemberVO;
 
-@RequestMapping("/sys/member")
+@RequestMapping("/sys")
 @Controller
 public class MemberController {
 
@@ -24,7 +24,7 @@ public class MemberController {
 	private MemberService mService;
 	
 	private final String rootView = "/member/";
-	private final String suffix = ".tiles";
+	private final String suffix = ".page";
 	
 	@GetMapping("/login.do")
 	public ModelAndView login(ModelAndView mnv) {
@@ -58,6 +58,7 @@ public class MemberController {
 		return mnv;
 	}
 	
+	@RequestMapping("/memberRegView.do")
 	public ModelAndView memberRegView(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberRegView" + suffix;
 		mnv.setViewName(url);
