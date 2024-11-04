@@ -16,7 +16,7 @@ import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberService;
 import altService.sys.member.service.MemberVO;
 
-@RequestMapping("/member")
+@RequestMapping("/sys/member")
 @Controller
 public class MemberController {
 
@@ -24,6 +24,7 @@ public class MemberController {
 	private MemberService mService;
 	
 	private final String rootView = "/member/";
+	private final String suffix = ".tiles";
 	
 	@GetMapping("/login.do")
 	public ModelAndView login(ModelAndView mnv) {
@@ -55,7 +56,11 @@ public class MemberController {
 		if(loginUser != null) System.out.println("로그인 성공");
 		
 		return mnv;
-		
 	}
 	
+	public ModelAndView memberRegView(ModelAndView mnv) {
+		String url = "/sys" + rootView + "memberRegView" + suffix;
+		mnv.setViewName(url);
+		return mnv;
+	}
 }
