@@ -33,12 +33,12 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">회원ID</label>
+									<label for="emplyr_id" class="col-form-label">회원ID</label>
 								</div>
 								<div class="col-9 input-group">
-									<input type="text" class="form-control" name="upper_menu_no" value="${vo.upper_menu_no }">
+									<input type="text" class="form-control" name="emplyr_id">
 									<div class="input-group-append">
-										<button type="submit" class="btn btn-md btn-default" onclick="open_upper_menu_no()">중복확인</button>
+										<button type="submit" class="btn btn-md btn-default" onclick="">중복확인</button>
 									</div>
 								</div>
 							</div>
@@ -46,40 +46,40 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">회원이름</label>
+									<label for="emplyr_nm" class="col-form-label">회원이름</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="emplyr_nm">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">비밀번호</label>
+									<label for="password" class="col-form-label">비밀번호</label>
 								</div>
 								<div class="col-9">
-									<input type="password" class="form-control" name="progrm_file_nm">
+									<input type="password" class="form-control" name="password">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">비밀번호확인</label>
+									<label for="password_chk" class="col-form-label">비밀번호확인</label>
 								</div>
 								<div class="col-9">
-									<input type="password" class="form-control" name="progrm_file_nm">
+									<input type="password" class="form-control" name="password_chk">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">비밀번호힌트</label>
+									<label for="password_hint" class="col-form-label">비밀번호힌트</label>
 								</div>
 								<div class="col-9">
-									<select class="custom-select">
+									<select class="custom-select" name="password_hint">
 										<option>--선택하세요--</option>
 									</select>
 								</div>
@@ -88,10 +88,10 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">비밀번호정답</label>
+									<label for="password_cnsr" class="col-form-label">비밀번호정답</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="password_cnsr">
 								</div>
 							</div>
 						</div>
@@ -110,12 +110,12 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">전화번호</label>
+									<label for="" class="col-form-label">전화번호</label>
 								</div>
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											<input type="text" class="form-control" name="progrm_file_nm" style="width: 100px;"> - <input type="text" class="form-control" name="progrm_file_nm" style="width: 100px;"> - <input type="text" class="form-control" name="progrm_file_nm" style="width: 100px;">
+											<input type="text" class="form-control" name="area_no" style="width: 100px;"> - <input type="text" class="form-control" name="middle_telno" style="width: 100px;"> - <input type="text" class="form-control" name="end_telno" style="width: 100px;">
 										</div>
 									</div>
 								</div>
@@ -124,50 +124,50 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">이메일주소</label>
+									<label for="email_adres" class="col-form-label">이메일주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="email_adres">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">우편번호</label>
+									<label for="zip" class="col-form-label">우편번호</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="zip">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">주소</label>
+									<label for="homeadres" class="col-form-label">주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="homeadres">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">상세주소</label>
+									<label for="detail_adres" class="col-form-label">상세주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="detail_adres">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="upper_menu_no" class="col-form-label">회원상태</label>
+									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="progrm_file_nm">
+									<input type="text" class="form-control" name="emplyr_sttus_code">
 								</div>
 							</div>
 						</div>
