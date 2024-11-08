@@ -1,6 +1,8 @@
 package altService.sys.member.web;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import altService.exception.LoginFailException;
+import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
 import altService.sys.member.service.MemberVO;
 
@@ -62,6 +65,21 @@ public class MemberController {
 	public ModelAndView memberRegView(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberRegView" + suffix;
 		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	@PostMapping("/memberReg.do")
+	public ModelAndView memberReg(ModelAndView mnv, MemberManageVO vo) {
+		Map<String,Object> paramMap = new HashMap<>();
+		paramMap.put("vo", vo);
+		
+		try {
+			mService.registMemberManage(paramMap);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return mnv;
 	}
 }

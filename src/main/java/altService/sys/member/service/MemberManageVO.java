@@ -1,4 +1,4 @@
-package altService.sys.member.service.impl;
+package altService.sys.member.service;
 
 public class MemberManageVO {
 

@@ -7,4 +7,8 @@
 		WHERE altNo = #{altNo}
 		AND pwd = #{pwd}
 	</select>
+	
+	<insert id="insertMemberManage" parameterType="memberManage">
+	
+	</insert>
 </mapper>
