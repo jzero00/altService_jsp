@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Diebock</title>
+<script>
+function registMember(){
+	document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
+	memberVO.submit();
+}
+</script>
 </head>
 <body>
 	<section class="content">
@@ -46,10 +53,10 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="emplyr_nm" class="col-form-label">회원이름</label>
+									<label for="user_nm" class="col-form-label">회원이름</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="emplyr_nm">
+									<input type="text" class="form-control" name="user_nm">
 								</div>
 							</div>
 						</div>
@@ -115,7 +122,7 @@
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											<input type="text" class="form-control" name="area_no" style="width: 100px;"> - <input type="text" class="form-control" name="middle_telno" style="width: 100px;"> - <input type="text" class="form-control" name="end_telno" style="width: 100px;">
+											<input type="text" class="form-control" name="area_no" style="width: 100px;"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;">
 										</div>
 									</div>
 								</div>
@@ -176,7 +183,7 @@
 							<div class="col-9"></div>
 							<div class="col-3">
 								<div>
-									<button type="button" class="btn bg-gradient-primary" style="margin-right: 10px;" onclick="modifyMenu(); return false;">등록</button>
+									<button type="button" class="btn bg-gradient-primary" style="margin-right: 10px;" onclick="registMember(); return false;">등록</button>
 									<button type="button" class="btn bg-gradient-primary" onclick="listMenu(); return false;">목록</button>
 								</div>
 							</div>

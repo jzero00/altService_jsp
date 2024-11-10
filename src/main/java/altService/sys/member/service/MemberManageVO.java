@@ -3,13 +3,14 @@ package altService.sys.member.service;
 public class MemberManageVO {
 
 	private String emplyr_id;
-	private String emplyr_nm;
+	private String user_nm;
 	private String password;
 	private String password_hint;
 	private String password_cnsr;
 	private String area_no;
-	private String middle_telno;
-	private String end_telno;
+	private String house_middle_telno;
+	private String house_end_telno;
+	private String house_adres;
 
 	public String getEmplyr_id() {
 		return emplyr_id;
@@ -19,12 +20,12 @@ public class MemberManageVO {
 		this.emplyr_id = emplyr_id;
 	}
 
-	public String getEmplyr_nm() {
-		return emplyr_nm;
+	public String getUser_nm() {
+		return user_nm;
 	}
 
-	public void setEmplyr_nm(String emplyr_nm) {
-		this.emplyr_nm = emplyr_nm;
+	public void setUser_nm(String user_nm) {
+		this.user_nm = user_nm;
 	}
 
 	public String getPassword() {
@@ -59,19 +60,28 @@ public class MemberManageVO {
 		this.area_no = area_no;
 	}
 
-	public String getMiddle_telno() {
-		return middle_telno;
+	public String getHouse_middle_telno() {
+		return house_middle_telno;
 	}
 
-	public void setMiddle_telno(String middle_telno) {
-		this.middle_telno = middle_telno;
+	public void setHouse_middle_telno(String house_middle_telno) {
+		this.house_middle_telno = house_middle_telno;
 	}
 
-	public String getEnd_telno() {
-		return end_telno;
+	public String getHouse_end_telno() {
+		return house_end_telno;
 	}
 
-	public void setEnd_telno(String end_telno) {
-		this.end_telno = end_telno;
+	public void setHouse_end_telno(String house_end_telno) {
+		this.house_end_telno = house_end_telno;
 	}
+
+	public String getHouse_adres() {
+		return house_adres;
+	}
+
+	public void setHouse_adres(String house_adres) {
+		this.house_adres = house_adres;
+	}
+
 }
