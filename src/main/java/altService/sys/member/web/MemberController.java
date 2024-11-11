@@ -61,6 +61,14 @@ public class MemberController {
 		return mnv;
 	}
 	
+	@RequestMapping("/memberManage.do")
+	public ModelAndView memberManage(ModelAndView mnv) {
+		String url = "/sys" + rootView + "memberManage" + suffix;
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
 	@RequestMapping("/memberRegView.do")
 	public ModelAndView memberRegView(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberRegView" + suffix;
@@ -71,10 +79,16 @@ public class MemberController {
 	@PostMapping("/memberReg.do")
 	public ModelAndView memberReg(ModelAndView mnv, MemberManageVO vo) {
 		Map<String,Object> paramMap = new HashMap<>();
+		String url = "";
 		paramMap.put("vo", vo);
 		
 		try {
 			mService.registMemberManage(paramMap);
+			url = "/alert";
+			
+			mnv.addObject("url", "/sys/memberManage.do");
+			mnv.addObject("result", "사용자 등록 완료");
+			mnv.setViewName(url);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
