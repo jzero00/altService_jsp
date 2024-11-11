@@ -10,8 +10,10 @@
 	
 	<insert id="insertMemberManage" parameterType="memberManage">
 		INSERT INTO altservice.comtnemplyrinfo
-		(emplyr_id,	user_nm, password, password_hint, password_cnsr, area_no, house_middle_telno, house_end_telno, house_adres)
+		(emplyr_id,	user_nm, password, password_hint, password_cnsr, area_no,
+		 house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code)
 		VALUES
-		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, #{password_cnsr}, #{area_no}, #{house_middle_telno}, #{house_end_telno}, #{house_adres})
+		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, #{password_cnsr}, #{area_no},
+		 #{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code})
 	</insert>
 </mapper>

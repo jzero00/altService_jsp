@@ -151,10 +151,10 @@ function registMember(){
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
-									<label for="homeadres" class="col-form-label">주소</label>
+									<label for="house_adres" class="col-form-label">주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="homeadres">
+									<input type="text" class="form-control" name="house_adres">
 								</div>
 							</div>
 						</div>

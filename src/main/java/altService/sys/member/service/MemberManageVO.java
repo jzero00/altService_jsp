@@ -11,6 +11,8 @@ public class MemberManageVO {
 	private String house_middle_telno;
 	private String house_end_telno;
 	private String house_adres;
+	private String zip;
+	private String emplyr_sttus_code;
 
 	public String getEmplyr_id() {
 		return emplyr_id;
@@ -82,6 +84,22 @@ public class MemberManageVO {
 
 	public void setHouse_adres(String house_adres) {
 		this.house_adres = house_adres;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public String getEmplyr_sttus_code() {
+		return emplyr_sttus_code;
+	}
+
+	public void setEmplyr_sttus_code(String emplyr_sttus_code) {
+		this.emplyr_sttus_code = emplyr_sttus_code;
 	}
 
 }
