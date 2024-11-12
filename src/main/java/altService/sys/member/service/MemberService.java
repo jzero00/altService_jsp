@@ -10,5 +10,7 @@ public interface MemberService {
 	public MemberVO login(MemberVO vo) throws SQLException, LoginFailException;
 
 	public void registMemberManage(Map<String, Object> paramMap) throws SQLException;
+	
+	public Map<String,Object> getMemberManageList() throws SQLException;
 
 }

@@ -64,7 +64,16 @@ public class MemberController {
 	@RequestMapping("/memberManage.do")
 	public ModelAndView memberManage(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberManage" + suffix;
+		Map<String,Object> dataMap = null;
 		
+		try {
+			dataMap = mService.getMemberManageList();
+			mnv.addAllObjects(dataMap);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 		mnv.setViewName(url);
 		return mnv;
 	}

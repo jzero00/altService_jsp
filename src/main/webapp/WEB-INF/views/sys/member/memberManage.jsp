@@ -69,15 +69,15 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list }" var="list">
-						<tr id="${list.menu_no }" onclick="menuManageMod(this); return false;">
-							<td>${list.menu_no }</td>
+						<tr id="" onclick="menuManageMod(this); return false;">
+							<td></td>
 							<td><input type="checkbox"></td>
-							<td>${list.menu_nm }</td>
-							<td>${list.progrm_file_nm }</td>
-							<td>${list.menu_dc }</td>
-							<td>${list.menu_dc }</td>
-							<td>${list.menu_dc }</td>
-							<td>${list.upper_menu_no }</td>
+							<td>${list.emplyr_id }</td>
+							<td>${list.user_nm }</td>
+							<td></td>
+							<td>${list.house_middle_telno }</td>
+							<td></td>
+							<td>${list.emplyr_sttus_code }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

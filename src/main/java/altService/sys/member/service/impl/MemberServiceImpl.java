@@ -1,6 +1,8 @@
 package altService.sys.member.service.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,17 @@ public class MemberServiceImpl implements MemberService {
 	public void registMemberManage(Map<String, Object> paramMap) throws SQLException {
 		MemberManageVO vo = (MemberManageVO) paramMap.get("vo");
 		mMapper.insertMemberManage(vo);
+	}
+
+	@Override
+	public Map<String, Object> getMemberManageList() throws SQLException {
+		Map<String,Object> dataMap = new HashMap<>();
+		List<MemberManageVO> list = null;
+		
+		list = mMapper.selectMemberManageList();
+		
+		dataMap.put("list", list);
+		return dataMap;
 	}
 
 }

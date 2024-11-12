@@ -16,4 +16,14 @@
 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, #{password_cnsr}, #{area_no},
 		 #{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code})
 	</insert>
+	
+	<select id="selectMemberManageList" resultType="memberManage">
+		SELECT *
+		FROM altservice.comtnemplyrinfo
+	</select>
+	
+	<select id="selectMemberManageListCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM altservice.comtnemplyrinfo
+	</select>
 </mapper>
