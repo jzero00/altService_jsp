@@ -82,7 +82,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form name="menuManageVO" action="<c:url value='/sys/menuRegView.do' />" method="post">
+			<form name="memberManageVO" action="<c:url value='/sys/memberRegView.do' />" method="post">
 				<input type="hidden" id="menu_no" name="menu_no" value="">
 			</form>
 		</div>
