@@ -105,4 +105,12 @@ public class MemberController {
 		
 		return mnv;
 	}
+	
+	@RequestMapping("/memberDtl.do")
+	public ModelAndView memberDtl(ModelAndView mnv, MemberManageVO vo) {
+		Map<String,Object> paramMap = new HashMap<>();
+		String url = "/sys" + rootView + "memberDtl" + suffix;
+		mnv.setViewName(url);
+		return mnv;
+	}
 }
