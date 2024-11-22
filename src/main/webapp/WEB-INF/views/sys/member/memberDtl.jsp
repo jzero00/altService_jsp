@@ -43,7 +43,7 @@ function registMember(){
 									<label for="emplyr_id" class="col-form-label">회원ID</label>
 								</div>
 								<div class="col-9 input-group">
-									<input type="text" class="form-control" name="emplyr_id" value="${vo.emplyr_id }">
+									<input type="text" class="form-control" name="emplyr_id">
 									<div class="input-group-append">
 										<button type="submit" class="btn btn-md btn-default" onclick="">중복확인</button>
 									</div>
@@ -56,7 +56,7 @@ function registMember(){
 									<label for="user_nm" class="col-form-label">회원이름</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="user_nm" value="${vo.user_nm }">
+									<input type="text" class="form-control" name="user_nm">
 								</div>
 							</div>
 						</div>
@@ -98,7 +98,7 @@ function registMember(){
 									<label for="password_cnsr" class="col-form-label">비밀번호정답</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="password_cnsr" value="${vo.password_cnsr }">
+									<input type="text" class="form-control" name="password_cnsr">
 								</div>
 							</div>
 						</div>
@@ -144,7 +144,7 @@ function registMember(){
 									<label for="zip" class="col-form-label">우편번호</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="zip" value="${vo.zip }">
+									<input type="text" class="form-control" name="zip">
 								</div>
 							</div>
 						</div>
@@ -154,7 +154,7 @@ function registMember(){
 									<label for="house_adres" class="col-form-label">주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="house_adres" value="${vo.house_adres }">
+									<input type="text" class="form-control" name="house_adres">
 								</div>
 							</div>
 						</div>
@@ -164,7 +164,7 @@ function registMember(){
 									<label for="detail_adres" class="col-form-label">상세주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="detail_adres" value="${vo.detail_adres }">
+									<input type="text" class="form-control" name="detail_adres">
 								</div>
 							</div>
 						</div>
@@ -174,7 +174,7 @@ function registMember(){
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="emplyr_sttus_code" value="${vo.emplyr_sttus_code }">
+									<input type="text" class="form-control" name="emplyr_sttus_code">
 								</div>
 							</div>
 						</div>

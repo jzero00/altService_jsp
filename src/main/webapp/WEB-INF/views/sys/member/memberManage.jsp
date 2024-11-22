@@ -69,10 +69,10 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list }" var="list">
-						<tr id="" onclick="menuManageMod(this); return false;">
+						<tr id="" onclick="memberManageDtl(this); return false;">
 							<td></td>
 							<td><input type="checkbox"></td>
-							<td>${list.emplyr_id }</td>
+							<td id="id">${list.emplyr_id }</td>
 							<td>${list.user_nm }</td>
 							<td></td>
 							<td>${list.house_middle_telno }</td>
@@ -82,10 +82,19 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form name="memberManageVO" action="<c:url value='/sys/memberRegView.do' />" method="post">
-				<input type="hidden" id="menu_no" name="menu_no" value="">
+			<form name="memberManageVO" method="post">
+				<input type="hidden" id="id" name="emplyr_id" value="">
 			</form>
 		</div>
 	</section>
 </body>
+<script>
+function memberManageDtl(e){
+	let id = e.querySelector("td[id=id]").innerHTML;
+	console.log(id);
+	document.memberManageVO.action = "<c:url value='/sys/memberDtl.do'/>";
+	document.memberManageVO.querySelector("input[id=id]").value = id;
+	memberManageVO.submit();
+}
+</script>
 </html>
