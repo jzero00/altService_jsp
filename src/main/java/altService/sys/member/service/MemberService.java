@@ -12,5 +12,7 @@ public interface MemberService {
 	public void registMemberManage(Map<String, Object> paramMap) throws SQLException;
 	
 	public Map<String,Object> getMemberManageList() throws SQLException;
+	
+	public MemberManageVO getMemberManageDetail(MemberManageVO vo) throws SQLException;
 
 }

@@ -25,22 +25,21 @@ public class MemberController {
 
 	@Autowired
 	private MemberService mService;
-	
+
 	private final String rootView = "/member/";
 	private final String suffix = ".page";
-	
+
 	@GetMapping("/login.do")
 	public ModelAndView login(ModelAndView mnv) {
 		String url = rootView + "login";
-		
-		
+
 		mnv.setViewName(url);
 		return mnv;
 	}
-	
+
 	@PostMapping("/login.do")
 	public ModelAndView postLogin(ModelAndView mnv, MemberVO vo, HttpServletRequest req) {
-		
+
 		MemberVO loginUser = null;
 		try {
 			loginUser = mService.login(vo);
@@ -55,17 +54,18 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(loginUser != null) System.out.println("로그인 성공");
-		
+
+		if (loginUser != null)
+			System.out.println("로그인 성공");
+
 		return mnv;
 	}
-	
+
 	@RequestMapping("/memberManage.do")
 	public ModelAndView memberManage(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberManage" + suffix;
-		Map<String,Object> dataMap = null;
-		
+		Map<String, Object> dataMap = null;
+
 		try {
 			dataMap = mService.getMemberManageList();
 			mnv.addAllObjects(dataMap);
@@ -73,28 +73,28 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+
 		mnv.setViewName(url);
 		return mnv;
 	}
-	
+
 	@RequestMapping("/memberRegView.do")
 	public ModelAndView memberRegView(ModelAndView mnv) {
 		String url = "/sys" + rootView + "memberRegView" + suffix;
 		mnv.setViewName(url);
 		return mnv;
 	}
-	
+
 	@PostMapping("/memberReg.do")
 	public ModelAndView memberReg(ModelAndView mnv, MemberManageVO vo) {
-		Map<String,Object> paramMap = new HashMap<>();
+		Map<String, Object> paramMap = new HashMap<>();
 		String url = "";
 		paramMap.put("vo", vo);
-		
+
 		try {
 			mService.registMemberManage(paramMap);
 			url = "/alert";
-			
+
 			mnv.addObject("url", "/sys/memberManage.do");
 			mnv.addObject("result", "사용자 등록 완료");
 			mnv.setViewName(url);
@@ -102,15 +102,23 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mnv;
 	}
-	
+
 	@RequestMapping("/memberDtl.do")
 	public ModelAndView memberDtl(ModelAndView mnv, MemberManageVO vo) {
-		Map<String,Object> paramMap = new HashMap<>();
 		String url = "/sys" + rootView + "memberDtl" + suffix;
-		mnv.setViewName(url);
+
+		try {
+			MemberManageVO resVO = mService.getMemberManageDetail(vo);
+			mnv.addObject("vo", resVO);
+			mnv.setViewName(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return mnv;
 	}
 }

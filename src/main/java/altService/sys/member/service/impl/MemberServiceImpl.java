@@ -45,4 +45,11 @@ public class MemberServiceImpl implements MemberService {
 		return dataMap;
 	}
 
+	@Override
+	public MemberManageVO getMemberManageDetail(MemberManageVO vo) throws SQLException {
+		MemberManageVO resVO = null;
+		resVO = mMapper.selectMemberManageDetail(vo);
+		return resVO;
+	}
+
 }
