@@ -21,22 +21,6 @@ function registMember(){
 						<h3 class="card-title">회원관리 등록</h3>
 					</div>
 					<div class="card-body">
-						<%-- 						<div class="form-group">
-							<div class="row">
-								<div class="col-2">
-									<label for="menu_no" class="col-form-label">메뉴No *</label>
-								</div>
-								<div class="col-4">
-									<input type="text" class="form-control" name="menu_no" value="${vo.menu_no }">
-								</div>
-								<div class="col-2">
-									<label for="menu_ordr" class="col-form-label">메뉴순서 *</label>
-								</div>
-								<div class="col-4">
-									<input type="text" class="form-control" name="menu_ordr" value="${vo.menu_ordr }">
-								</div>
-							</div>
-						</div> --%>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">

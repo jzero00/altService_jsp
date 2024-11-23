@@ -108,7 +108,7 @@ public class MemberController {
 
 	@RequestMapping("/memberDtl.do")
 	public ModelAndView memberDtl(ModelAndView mnv, MemberManageVO vo) {
-		String url = "/sys" + rootView + "memberRegView" + suffix;
+		String url = "/sys" + rootView + "memberDtl" + suffix;
 
 		try {
 			MemberManageVO resVO = mService.getMemberManageDetail(vo);
