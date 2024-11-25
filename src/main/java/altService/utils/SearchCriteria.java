@@ -8,13 +8,13 @@ public class SearchCriteria {
 	private String searchType; // 검색구분
 	private String keyword; // 검색어
 
-	public SearchCriteria(int page, int perPageNum, int offset, String searchType, String keyword) {
+	public SearchCriteria() {
 		super();
-		this.page = page;
-		this.perPageNum = perPageNum;
-		this.offset = offset;
-		this.searchType = searchType;
-		this.keyword = keyword;
+		this.page = 1;
+		this.perPageNum = 10;
+		this.offset = 0;
+		this.searchType = "";
+		this.keyword = "";
 	}
 
 	public int getPage() {

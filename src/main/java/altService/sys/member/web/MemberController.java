@@ -18,6 +18,7 @@ import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
 import altService.sys.member.service.MemberVO;
+import altService.utils.SearchCriteria;
 
 @RequestMapping("/sys")
 @Controller
@@ -62,12 +63,12 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberManage.do")
-	public ModelAndView memberManage(ModelAndView mnv) {
+	public ModelAndView memberManage(ModelAndView mnv, SearchCriteria cri) {
 		String url = "/sys" + rootView + "memberManage" + suffix;
 		Map<String, Object> dataMap = null;
 
 		try {
-			dataMap = mService.getMemberManageList();
+			dataMap = mService.getMemberManageList(cri);
 			mnv.addAllObjects(dataMap);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

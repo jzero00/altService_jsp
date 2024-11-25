@@ -41,7 +41,7 @@
 							</div>
 							<div class="col-3">
 								<div class="btn-group">
-									<button type="button" class="btn bg-gradient-primary">조회</button>
+									<button type="button" class="btn bg-gradient-primary" onclick="searchMember(); return false;">조회</button>
 								</div>
 								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary">삭제</button>
@@ -83,7 +83,9 @@
 				</tbody>
 			</table>
 			<form name="memberManageVO" method="post">
-				<input type="hidden" id="id" name="emplyr_id" value="">
+				<input type="hidden" id="searchType" name="searchType" value="">
+				<input type="hidden" id="keyword" name="keyword" value="">
+				<input type="hidden" id="id" name="id" value="">
 			</form>
 		</div>
 	</section>
@@ -94,6 +96,17 @@ function memberManageDtl(e){
 	console.log(id);
 	document.memberManageVO.action = "<c:url value='/sys/memberDtl.do'/>";
 	document.memberManageVO.querySelector("input[id=id]").value = id;
+	memberManageVO.submit();
+}
+
+function searchMember(){
+	let searchType = document.querySelector("select[id=searchType]").value;
+	let keyword = document.querySelector("input[id=keyword]").value;
+	
+	document.memberManageVO.querySelector("input[id=searchType]").value = searchType;
+	document.memberManageVO.querySelector("input[id=keyword]").value = keyword;
+	
+	document.memberManageVO.action = "<c:url value='/sys/memberManage.do'/>";
 	memberManageVO.submit();
 }
 </script>

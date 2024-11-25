@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberVO;
+import altService.utils.SearchCriteria;
 
 @Repository("MemberMapper")
 public interface MemberMapper {
@@ -15,7 +16,7 @@ public interface MemberMapper {
 
 	public void insertMemberManage(MemberManageVO vo) throws SQLException;
 	
-	public List<MemberManageVO> selectMemberManageList() throws SQLException;
+	public List<MemberManageVO> selectMemberManageList(SearchCriteria cri) throws SQLException;
 	
 	public int selectMemberManageListCnt() throws SQLException;
 	

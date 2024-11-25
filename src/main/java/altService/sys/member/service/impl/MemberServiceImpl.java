@@ -12,6 +12,7 @@ import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
 import altService.sys.member.service.MemberVO;
+import altService.utils.SearchCriteria;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -35,11 +36,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Map<String, Object> getMemberManageList() throws SQLException {
+	public Map<String, Object> getMemberManageList(SearchCriteria cri) throws SQLException {
 		Map<String,Object> dataMap = new HashMap<>();
 		List<MemberManageVO> list = null;
 		
-		list = mMapper.selectMemberManageList();
+		list = mMapper.selectMemberManageList(cri);
 		
 		dataMap.put("list", list);
 		return dataMap;

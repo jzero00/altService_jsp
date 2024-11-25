@@ -1,35 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="altService.sys.member.service.impl.MemberMapper">
+<mapper	namespace="altService.sys.member.service.impl.MemberMapper">
 
+	<sql id="search">
+		<if test="searchType != null and (searchType != '') and (keyword != null) and (keyword !='')">
+			<if test="searchType == 'id'.toString()">
+				AND (emplyr_id LIKE CONCAT('%',#{keyword},'%'))
+			</if>
+			<if test="searchType == 'user_nm'.toString()">
+				AND (user_nm LIKE CONCAT('%',#{keyword},'%'))
+			</if>
+		</if>
+	</sql>
+	
 	<select id="login" parameterType="member" resultType="member">
-		SELECT * FROM altservice.member
+		SELECT *
+		FROM altservice.member
 		WHERE altNo = #{altNo}
 		AND pwd = #{pwd}
 	</select>
-	
+
 	<insert id="insertMemberManage" parameterType="memberManage">
-		INSERT INTO altservice.comtnemplyrinfo
-		(emplyr_id,	user_nm, password, password_hint, password_cnsr, area_no,
-		 house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code)
+		INSERT INTO
+		altservice.comtnemplyrinfo
+		(emplyr_id, user_nm, password,
+		password_hint, password_cnsr, area_no,
+		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code)
 		VALUES
-		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, #{password_cnsr}, #{area_no},
-		 #{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code})
+		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
+		#{password_cnsr}, #{area_no},
+		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code})
 	</insert>
-	
-	<select id="selectMemberManageList" resultType="memberManage">
+
+	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
 		SELECT *
 		FROM altservice.comtnemplyrinfo
+		WHERE 1=1
+		<include refid="search" />
+		LIMIT #{perPageNum} OFFSET #{offset}
 	</select>
-	
+
 	<select id="selectMemberManageListCnt" resultType="int">
-		SELECT COUNT(*)
+		SELECT
+		COUNT(*)
 		FROM altservice.comtnemplyrinfo
 	</select>
-	
-	<select id="selectMemberManageDetail" parameterType="memberManage" resultType="memberManage">
+
+	<select id="selectMemberManageDetail"
+		parameterType="memberManage" resultType="memberManage">
 		SELECT *
-		FROM altservice.comtnemplyrinfo
+		FROM
+		altservice.comtnemplyrinfo
 		WHERE emplyr_id = #{emplyr_id}
 	</select>
 </mapper>

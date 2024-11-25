@@ -7,6 +7,7 @@
 		<typeAlias type="java.util.HashMap" alias="paramMap"/>
 		<typeAlias type="java.util.Map" alias="map"/>
 		
+		<typeAlias type="altService.utils.SearchCriteria" alias="cri"/>
 		
 		<typeAlias type="altService.sys.member.service.MemberVO" alias="member"/>
 		
