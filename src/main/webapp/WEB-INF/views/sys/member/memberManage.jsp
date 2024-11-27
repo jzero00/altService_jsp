@@ -25,8 +25,8 @@
 									</div>
 									<div class="col-6">
 										<select class="form-control" id="searchType">
-											<option value="id">ID</option>
-											<option value="user_nm">사용자이름</option>
+											<option value="id" <c:if test="${cri.searchType eq 'id'}">selected</c:if> >ID</option>
+											<option value="user_nm" <c:if test="${cri.searchType eq 'user_nm'}">selected</c:if>>사용자이름</option>
 										</select>
 									</div>
 								</div>
@@ -35,7 +35,7 @@
 								<div class="form-group row">
 									<label for="menu" class="col-sm-3 col-form-label">메뉴명 : </label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="keyword">
+										<input type="text" class="form-control" id="keyword" value="${cri.keyword }">
 									</div>
 								</div>
 							</div>
@@ -83,8 +83,8 @@
 				</tbody>
 			</table>
 			<form name="memberManageVO" method="post">
-				<input type="hidden" id="searchType" name="searchType" value="">
-				<input type="hidden" id="keyword" name="keyword" value="">
+				<input type="hidden" id="searchType" name="searchType" value="${cri.searchType }">
+				<input type="hidden" id="keyword" name="keyword" value="${cri.keyword }">
 				<input type="hidden" id="id" name="id" value="">
 			</form>
 		</div>

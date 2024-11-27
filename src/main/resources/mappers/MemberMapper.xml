@@ -25,11 +25,11 @@
 		altservice.comtnemplyrinfo
 		(emplyr_id, user_nm, password,
 		password_hint, password_cnsr, area_no,
-		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code)
+		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de)
 		VALUES
 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
 		#{password_cnsr}, #{area_no},
-		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code})
+		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code}, now())
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">

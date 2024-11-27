@@ -43,6 +43,8 @@ public class MemberServiceImpl implements MemberService {
 		list = mMapper.selectMemberManageList(cri);
 		
 		dataMap.put("list", list);
+		dataMap.put("cri", cri);
+		
 		return dataMap;
 	}
 
