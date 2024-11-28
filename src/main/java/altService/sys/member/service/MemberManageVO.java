@@ -2,6 +2,7 @@ package altService.sys.member.service;
 
 public class MemberManageVO {
 
+	private int list_no;
 	private String emplyr_id;
 	private String user_nm;
 	private String password;
@@ -13,6 +14,14 @@ public class MemberManageVO {
 	private String house_adres;
 	private String zip;
 	private String emplyr_sttus_code;
+
+	public int getList_no() {
+		return list_no;
+	}
+
+	public void setList_no(int list_no) {
+		this.list_no = list_no;
+	}
 
 	public String getEmplyr_id() {
 		return emplyr_id;

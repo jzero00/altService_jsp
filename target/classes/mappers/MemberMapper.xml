@@ -33,8 +33,8 @@
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
-		SELECT *
-		FROM altservice.comtnemplyrinfo
+		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, c.EMPLYR_STTUS_CODE, c.SBSCRB_DE
+		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo)) r, altservice.comtnemplyrinfo c
 		WHERE 1=1
 		<include refid="search" />
 		LIMIT #{perPageNum} OFFSET #{offset}
@@ -44,6 +44,8 @@
 		SELECT
 		COUNT(*)
 		FROM altservice.comtnemplyrinfo
+		WHERE 1=1
+		<include refid="search" />
 	</select>
 
 	<select id="selectMemberManageDetail"

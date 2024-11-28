@@ -70,7 +70,7 @@
 				<tbody>
 					<c:forEach items="${list }" var="list">
 						<tr id="" onclick="memberManageDtl(this); return false;">
-							<td></td>
+							<td>${list.list_no }</td>
 							<td><input type="checkbox"></td>
 							<td id="id">${list.emplyr_id }</td>
 							<td>${list.user_nm }</td>
@@ -87,6 +87,9 @@
 				<input type="hidden" id="keyword" name="keyword" value="${cri.keyword }">
 				<input type="hidden" id="id" name="id" value="">
 			</form>
+			<ul class="pagination pagination-sm m-0 float-center">
+				<%@include file="/WEB-INF/views/include/pagination.jsp" %>
+			</ul>
 		</div>
 	</section>
 </body>

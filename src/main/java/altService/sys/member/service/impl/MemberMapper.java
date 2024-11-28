@@ -18,7 +18,7 @@ public interface MemberMapper {
 	
 	public List<MemberManageVO> selectMemberManageList(SearchCriteria cri) throws SQLException;
 	
-	public int selectMemberManageListCnt() throws SQLException;
+	public int selectMemberManageListCnt(SearchCriteria cri) throws SQLException;
 	
 	public MemberManageVO selectMemberManageDetail(MemberManageVO vo) throws SQLException;
 	
