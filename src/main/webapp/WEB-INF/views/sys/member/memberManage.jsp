@@ -83,11 +83,12 @@
 				</tbody>
 			</table>
 			<form name="memberManageVO" method="post">
+				<input type='hidden' name="page" value="${pageMaker.cri.page }" />
 				<input type="hidden" id="searchType" name="searchType" value="${cri.searchType }">
 				<input type="hidden" id="keyword" name="keyword" value="${cri.keyword }">
 				<input type="hidden" id="id" name="id" value="">
 			</form>
-			<ul class="pagination pagination-sm m-0 float-center">
+			<ul class="pagination m-0 justify-content-center">
 				<%@include file="/WEB-INF/views/include/pagination.jsp" %>
 			</ul>
 		</div>
@@ -112,5 +113,11 @@ function searchMember(){
 	document.memberManageVO.action = "<c:url value='/sys/memberManage.do'/>";
 	memberManageVO.submit();
 }
+
+function search_list_go(pageNo){
+	document.memberManageVO.querySelector("input[name=page]").value = pageNo;
+	document.memberManageVO.submit();
+}
+
 </script>
 </html>
