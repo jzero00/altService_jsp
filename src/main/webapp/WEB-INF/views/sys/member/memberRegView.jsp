@@ -72,6 +72,18 @@ function registMember(){
 								<div class="col-9">
 									<select class="custom-select" name="password_hint">
 										<option>--선택하세요--</option>
+										<option>기억에 남는 추억의 장소는?</option>
+										<option>자신의 인생 좌우명은?</option>
+										<option>가작 기억에 남는 선생님 성함은?</option>
+										<option>타인이 모르는 신체 비밀이 있다면?</option>
+										<option>받았던 선물 중 기억에 남는 독특한 선물은?</option>
+										<option>유년시절 가작 생각나는 친구 이릉은?</option>
+										<option>인상 깊게 읽은 책 이름은?</option>
+										<option>읽은 책 중에서 좋아하는 구절이 있다면?</option>
+										<option>자신이 두 번째로 존경하는 인물은?</option>
+										<option>친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+										<option>초등학교 때 기억에 남는 짝꿍 이름은?</option>
+										<option>내가 좋아하는 캐릭터는?</option>
 									</select>
 								</div>
 							</div>

@@ -119,5 +119,9 @@ function search_list_go(pageNo){
 	document.memberManageVO.submit();
 }
 
+function insertMember(){
+	document.memberManageVO.action = "<c:url value='/sys/memberRegView.do'/>";
+	memberManageVO.submit();
+}
 </script>
 </html>
