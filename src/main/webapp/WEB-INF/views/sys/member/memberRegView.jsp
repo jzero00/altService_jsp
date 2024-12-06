@@ -106,6 +106,8 @@ function registMember(){
 								<div class="col-9">
 									<select class="custom-select">
 										<option>--선택하세요--</option>
+										<option value="m">남자</option>
+										<option value="f">여자</option>
 									</select>
 								</div>
 							</div>

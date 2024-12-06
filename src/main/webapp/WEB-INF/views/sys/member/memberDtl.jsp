@@ -26,11 +26,8 @@ function registMember(){
 								<div class="col-3">
 									<label for="emplyr_id" class="col-form-label">회원ID</label>
 								</div>
-								<div class="col-9 input-group">
-									<input type="text" class="form-control" name="emplyr_id">
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-md btn-default" onclick="">중복확인</button>
-									</div>
+								<div class="col-9">
+									${vo.emplyr_id }
 								</div>
 							</div>
 						</div>
@@ -40,49 +37,7 @@ function registMember(){
 									<label for="user_nm" class="col-form-label">회원이름</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="user_nm">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-3">
-									<label for="password" class="col-form-label">비밀번호</label>
-								</div>
-								<div class="col-9">
-									<input type="password" class="form-control" name="password">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-3">
-									<label for="password_chk" class="col-form-label">비밀번호확인</label>
-								</div>
-								<div class="col-9">
-									<input type="password" class="form-control" name="password_chk">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-3">
-									<label for="password_hint" class="col-form-label">비밀번호힌트</label>
-								</div>
-								<div class="col-9">
-									<select class="custom-select" name="password_hint">
-										<option>--선택하세요--</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-3">
-									<label for="password_cnsr" class="col-form-label">비밀번호정답</label>
-								</div>
-								<div class="col-9">
-									<input type="text" class="form-control" name="password_cnsr">
+									${vo.user_nm }
 								</div>
 							</div>
 						</div>
@@ -92,9 +47,7 @@ function registMember(){
 									<label for="upper_menu_no" class="col-form-label">성별</label>
 								</div>
 								<div class="col-9">
-									<select class="custom-select">
-										<option>--선택하세요--</option>
-									</select>
+									
 								</div>
 							</div>
 						</div>

@@ -108,11 +108,13 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberDtl.do")
-	public ModelAndView memberDtl(ModelAndView mnv, MemberManageVO vo) {
+	public ModelAndView memberDtl(ModelAndView mnv, String id) {
 		String url = "/sys" + rootView + "memberDtl" + suffix;
+		MemberManageVO reqVO = new MemberManageVO();
+		reqVO.setEmplyr_id(id);
 
 		try {
-			MemberManageVO resVO = mService.getMemberManageDetail(vo);
+			MemberManageVO resVO = mService.getMemberManageDetail(reqVO);
 			mnv.addObject("vo", resVO);
 			mnv.setViewName(url);
 		} catch (SQLException e) {
