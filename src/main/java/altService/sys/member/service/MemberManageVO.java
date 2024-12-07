@@ -1,5 +1,7 @@
 package altService.sys.member.service;
 
+import java.util.Date;
+
 public class MemberManageVO {
 
 	private int list_no;
@@ -12,8 +14,12 @@ public class MemberManageVO {
 	private String house_middle_telno;
 	private String house_end_telno;
 	private String house_adres;
+	private String detail_adres;
 	private String zip;
 	private String emplyr_sttus_code;
+	private String sexdstn_code;
+	private String email_adres;
+	private Date sbscrb_de;
 
 	public int getList_no() {
 		return list_no;
@@ -95,6 +101,14 @@ public class MemberManageVO {
 		this.house_adres = house_adres;
 	}
 
+	public String getDetail_adres() {
+		return detail_adres;
+	}
+
+	public void setDetail_adres(String detail_adres) {
+		this.detail_adres = detail_adres;
+	}
+
 	public String getZip() {
 		return zip;
 	}
@@ -109,6 +123,30 @@ public class MemberManageVO {
 
 	public void setEmplyr_sttus_code(String emplyr_sttus_code) {
 		this.emplyr_sttus_code = emplyr_sttus_code;
+	}
+
+	public String getSexdstn_code() {
+		return sexdstn_code;
+	}
+
+	public void setSexdstn_code(String sexdstn_code) {
+		this.sexdstn_code = sexdstn_code;
+	}
+
+	public String getEmail_adres() {
+		return email_adres;
+	}
+
+	public void setEmail_adres(String email_adres) {
+		this.email_adres = email_adres;
+	}
+
+	public Date getSbscrb_de() {
+		return sbscrb_de;
+	}
+
+	public void setSbscrb_de(Date sbscrb_de) {
+		this.sbscrb_de = sbscrb_de;
 	}
 
 }

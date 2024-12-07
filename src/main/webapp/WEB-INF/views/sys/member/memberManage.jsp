@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,9 +75,9 @@
 							<td><input type="checkbox"></td>
 							<td id="id">${list.emplyr_id }</td>
 							<td>${list.user_nm }</td>
-							<td></td>
-							<td>${list.house_middle_telno }</td>
-							<td></td>
+							<td>${list.email_adres }</td>
+							<td>${list.area_no} - ${list.house_middle_telno } - ${list.house_end_telno }</td>
+							<td><fmt:formatDate value="${list.sbscrb_de }" pattern="yyyy-MM-dd"/></td>
 							<td>${list.emplyr_sttus_code }</td>
 						</tr>
 					</c:forEach>

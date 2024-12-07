@@ -24,16 +24,16 @@
 		INSERT INTO
 		altservice.comtnemplyrinfo
 		(emplyr_id, user_nm, password,
-		password_hint, password_cnsr, area_no,
+		password_hint, password_cnsr, area_no, sexdstn_code
 		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de)
 		VALUES
 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
-		#{password_cnsr}, #{area_no},
+		#{password_cnsr}, #{area_no}, #{sexdstn_code},
 		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code}, now())
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
-		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, c.EMPLYR_STTUS_CODE, c.SBSCRB_DE
+		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, IF(c.EMPLYR_STTUS_CODE = 1, '승인', IF(c.EMPLYR_STTUS_CODE = 2, '미승인','')) AS emplyr_sttus_code, c.SBSCRB_DE
 		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo)) r, altservice.comtnemplyrinfo c
 		WHERE 1=1
 		<include refid="search" />
