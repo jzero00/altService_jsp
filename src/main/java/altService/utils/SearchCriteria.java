@@ -7,6 +7,7 @@ public class SearchCriteria {
 	private int offset; // offset 다음페이지 출력시 몇번 자료부터 보여줄 것인지 결정
 	private String searchType; // 검색구분
 	private String keyword; // 검색어
+	private String stts;
 
 	public SearchCriteria() {
 		super();
@@ -61,4 +62,13 @@ public class SearchCriteria {
 	public int getPageStartRowNum() { // 각 페이지마다 시작하는 행번호
 		return (this.page - 1) * perPageNum;
 	}
+
+	public String getStts() {
+		return stts;
+	}
+
+	public void setStts(String stts) {
+		this.stts = stts;
+	}
+
 }

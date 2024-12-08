@@ -17,11 +17,11 @@
 							<div class="col-3">
 								<div class="form-group row">
 									<div class="col-6">
-									<select class="form-control" id="emplyr_sttus_code">
+									<select class="form-control" id="emplyrSttusCode">
 										<option value="">상태(전체)</option>
-										<option value="r">신청</option>
-										<option value="a">승인</option>
-										<option value="e">만료</option>
+										<option value="r" <c:if test="${cri.stts eq 'r'}">selected</c:if>>신청</option>
+										<option value="a" <c:if test="${cri.stts eq 'a'}">selected</c:if>>승인</option>
+										<option value="e" <c:if test="${cri.stts eq 'e'}">selected</c:if>>만료</option>
 									</select>
 									</div>
 									<div class="col-6">
@@ -69,10 +69,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list }" var="list">
+					<c:forEach items="${list}" var="list">
 						<tr id="" onclick="memberManageDtl(this); return false;">
 							<td>${list.list_no }</td>
-							<td><input type="checkbox"></td>
+							<td><input type="checkbox" onclick="checkbox(this,event)"></td>
 							<td id="id">${list.emplyr_id }</td>
 							<td>${list.user_nm }</td>
 							<td>${list.email_adres }</td>
@@ -88,6 +88,7 @@
 				<input type="hidden" id="searchType" name="searchType" value="${cri.searchType }">
 				<input type="hidden" id="keyword" name="keyword" value="${cri.keyword }">
 				<input type="hidden" id="id" name="id" value="">
+				<input type="hidden" id="stts" name="stts" value="${cri.stts }">
 			</form>
 			<ul class="pagination m-0 justify-content-center">
 				<%@include file="/WEB-INF/views/include/pagination.jsp" %>
@@ -107,9 +108,11 @@ function memberManageDtl(e){
 function searchMember(){
 	let searchType = document.querySelector("select[id=searchType]").value;
 	let keyword = document.querySelector("input[id=keyword]").value;
+	let emplyrSttusCode = document.querySelector("select[id=emplyrSttusCode]").value;
 	
 	document.memberManageVO.querySelector("input[id=searchType]").value = searchType;
 	document.memberManageVO.querySelector("input[id=keyword]").value = keyword;
+	document.memberManageVO.querySelector("input[id=stts]").value = emplyrSttusCode;
 	
 	document.memberManageVO.action = "<c:url value='/sys/memberManage.do'/>";
 	memberManageVO.submit();
@@ -123,6 +126,10 @@ function search_list_go(pageNo){
 function insertMember(){
 	document.memberManageVO.action = "<c:url value='/sys/memberRegView.do'/>";
 	memberManageVO.submit();
+}
+
+function checkbox(e,event){
+	event.stopPropagation();
 }
 </script>
 </html>
