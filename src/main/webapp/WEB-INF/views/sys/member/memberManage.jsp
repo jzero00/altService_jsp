@@ -45,7 +45,7 @@
 									<button type="button" class="btn bg-gradient-primary" onclick="searchMember(); return false;">조회</button>
 								</div>
 								<div class="btn-group">
-									<button type="button" class="btn bg-gradient-primary">삭제</button>
+									<button type="button" class="btn bg-gradient-primary" onclick="deleteMember(); return false;">삭제</button>
 								</div>
 								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary" onclick="insertMember(); return false;">등록</button>
@@ -99,7 +99,6 @@
 <script>
 function memberManageDtl(e){
 	let id = e.querySelector("td[id=id]").innerHTML;
-	console.log(id);
 	document.memberManageVO.action = "<c:url value='/sys/memberDtl.do'/>";
 	document.memberManageVO.querySelector("input[id=id]").value = id;
 	memberManageVO.submit();
@@ -131,5 +130,17 @@ function insertMember(){
 function checkbox(e,event){
 	event.stopPropagation();
 }
+
+
+function deleteMember(){
+	let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
+	console.log(checkedBoxes);
+	for(i = 0; i < checkedBoxes.length; i++){
+		console.log(checkedBoxes[i].parentNode.parentNode);
+	}
+}
+
+window.addEventListener("DOMContentLoaded",deleteMember);
+window.addEventListener("DOMContentLoaded",memberManageDtl);
 </script>
 </html>
