@@ -133,14 +133,21 @@ function checkbox(e,event){
 
 
 function deleteMember(){
-	let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
-	console.log(checkedBoxes);
-	for(i = 0; i < checkedBoxes.length; i++){
-		console.log(checkedBoxes[i].parentNode.parentNode);
+	if(confirm("삭제하시겠습니까?")){	
+		let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
+		let tr  = '';
+		let id = '';
+		console.log(checkedBoxes);
+		for(i = 0; i < checkedBoxes.length; i++){
+			tr = checkedBoxes[i].parentElement.parentElement;
+// 			console.log(tr);
+			let id += tr.querySelector("td:nth-child(3)").innerHTML;
+		}
+		console.log(id);
 	}
 }
 
-window.addEventListener("DOMContentLoaded",deleteMember);
-window.addEventListener("DOMContentLoaded",memberManageDtl);
+// window.addEventListener("DOMContentLoaded",deleteMember);
+// window.addEventListener("DOMContentLoaded",memberManageDtl);
 </script>
 </html>
