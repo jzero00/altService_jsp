@@ -136,14 +136,29 @@ function deleteMember(){
 	if(confirm("삭제하시겠습니까?")){	
 		let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
 		let tr  = '';
-		let id = '';
+		let deletedIds = new Array();
 		console.log(checkedBoxes);
 		for(i = 0; i < checkedBoxes.length; i++){
 			tr = checkedBoxes[i].parentElement.parentElement;
 // 			console.log(tr);
-			let id += tr.querySelector("td:nth-child(3)").innerHTML;
+			deletedIds.push(tr.querySelector("td:nth-child(3)").innerHTML);
 		}
-		console.log(id);
+		console.log(deletedIds);
+		
+		$.ajax({
+			url : '/sys/memberDelete.do',
+			method : 'post',
+			data : {'id' : deletedIds.toString()},
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(request, status, error) {
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	            var err=JSON.parse(request.responseText);
+
+	            alert(err.resData[0].errorMsg);
+			}
+		})
 	}
 }
 

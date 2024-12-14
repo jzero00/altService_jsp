@@ -27,7 +27,7 @@
 		INSERT INTO
 		altservice.comtnemplyrinfo
 		(emplyr_id, user_nm, password,
-		password_hint, password_cnsr, area_no, sexdstn_code
+		password_hint, password_cnsr, area_no, sexdstn_code,
 		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de)
 		VALUES
 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
@@ -37,17 +37,16 @@
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
 		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, IF(c.EMPLYR_STTUS_CODE = 'a', '승인', IF(c.EMPLYR_STTUS_CODE = 'r', '신청','')) AS emplyr_sttus_code, c.SBSCRB_DE
-		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE 1=1	<include refid="search" />)) r, altservice.comtnemplyrinfo c
-		WHERE 1=1
+		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE DELETE_AT = 'n'	<include refid="search" />)) r, altservice.comtnemplyrinfo c
+		WHERE DELETE_AT = 'n'
 		<include refid="search" />
 		LIMIT #{perPageNum} OFFSET #{offset}
 	</select>
 
 	<select id="selectMemberManageListCnt" parameterType="cri" resultType="int">
-		SELECT
-		COUNT(*)
+		SELECT COUNT(*) as cnt
 		FROM altservice.comtnemplyrinfo
-		WHERE 1=1
+		WHERE DELETE_AT = 'n'
 		<include refid="search" />
 	</select>
 
@@ -58,4 +57,10 @@
 		altservice.comtnemplyrinfo
 		WHERE emplyr_id = #{emplyr_id}
 	</select>
+	
+	<delete id="deleteMemberManage" parameterType="str">
+		UPDATE altservice.comtnemplyrinfo
+		SET DELETE_AT = 'Y'
+		WHERE emplyr_id = #{emplyr_id}
+	</delete>
 </mapper>

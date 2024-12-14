@@ -21,5 +21,7 @@ public interface MemberMapper {
 	public int selectMemberManageListCnt(SearchCriteria cri) throws SQLException;
 	
 	public MemberManageVO selectMemberManageDetail(MemberManageVO vo) throws SQLException;
+
+	public void deleteMemberManage(String id) throws SQLException;
 	
 }

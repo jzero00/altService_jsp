@@ -124,4 +124,26 @@ public class MemberController {
 
 		return mnv;
 	}
+	
+	@PostMapping("/memberDelete.do")
+	public ModelAndView memverDelete(ModelAndView mnv, String id) {
+		String url = "";
+		
+		try {
+			mService.deleteMemberManage(id);
+			
+			url = "/alert";
+			String redirectUrl = "/sys/memberManage.do";
+			String result = "삭제 완료했습니다.";
+			
+			mnv.addObject("result", result);
+			mnv.addObject("url", redirectUrl);
+			mnv.setViewName(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mnv;
+	}
 }

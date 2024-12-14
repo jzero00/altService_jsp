@@ -10,6 +10,11 @@ function registMember(){
 	document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
 	memberVO.submit();
 }
+
+function listMenu(){
+	document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
+	memberVO.submit();
+}
 </script>
 </head>
 <body>

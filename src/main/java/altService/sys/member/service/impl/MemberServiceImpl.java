@@ -63,4 +63,13 @@ public class MemberServiceImpl implements MemberService {
 		return resVO;
 	}
 
+	@Override
+	public void deleteMemberManage(String ids) throws SQLException {
+		String id = "";
+		String[] idArray = ids.split(",");
+		for(int i = 0; i < idArray.length; i++) {
+			id = idArray[i];
+			mMapper.deleteMemberManage(id);
+		}
+	}
 }

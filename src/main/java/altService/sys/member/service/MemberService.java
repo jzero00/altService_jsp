@@ -16,4 +16,6 @@ public interface MemberService {
 	
 	public MemberManageVO getMemberManageDetail(MemberManageVO vo) throws SQLException;
 
+	public void deleteMemberManage(String id) throws SQLException;
+
 }
