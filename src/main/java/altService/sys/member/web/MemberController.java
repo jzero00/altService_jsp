@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import altService.exception.LoginFailException;
@@ -106,6 +108,30 @@ public class MemberController {
 
 		return mnv;
 	}
+	
+	@PostMapping("/checkDupleId.do")
+	@ResponseBody
+	public Map<String,Object> checkDupleId(String id){
+		Map<String,Object> resMap = new HashMap<>();
+		boolean flag = false;
+		
+		try {
+			flag = mService.getMemeberDupleCheck(id);
+			if (flag) {
+				resMap.put("result", "사용가능");
+				resMap.put("status", HttpStatus.OK);
+			} else {
+				resMap.put("result", "사용불가");
+				resMap.put("status", HttpStatus.OK);
+			}
+		} catch (SQLException e) {
+			resMap.put("status", HttpStatus.INTERNAL_SERVER_ERROR);
+			e.printStackTrace();
+		}
+		
+		return resMap;
+	}
+	
 
 	@RequestMapping("/memberDtl.do")
 	public ModelAndView memberDtl(ModelAndView mnv, String id) {
@@ -127,23 +153,25 @@ public class MemberController {
 	
 	@PostMapping("/memberDelete.do")
 	public ModelAndView memverDelete(ModelAndView mnv, String id) {
-		String url = "";
+		String url = "alert";
+		String redirectUrl = "/sys/memberManage.do";
 		
 		try {
 			mService.deleteMemberManage(id);
 			
-			url = "/alert";
-			String redirectUrl = "/sys/memberManage.do";
 			String result = "삭제 완료했습니다.";
 			
 			mnv.addObject("result", result);
 			mnv.addObject("url", redirectUrl);
-			mnv.setViewName(url);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			String result = "삭제 실패했습니다. 관리자에게 문의하십시오.";
+			mnv.addObject("result", result);
+			mnv.addObject("url", redirectUrl);
 		}
 		
+		mnv.setViewName(url);
 		return mnv;
 	}
 }

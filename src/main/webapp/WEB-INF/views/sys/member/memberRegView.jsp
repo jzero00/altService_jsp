@@ -1,20 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Diebock</title>
 <script>
-function registMember(){
-	document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
-	memberVO.submit();
-}
+document.addEventListener("DOMContentLoaded", function(){
+	let checkDupleButton = document.querySelector("button[id=checkDupleId]");
+	checkDupleButton.addEventListener('click',function (){
+		let id = document.querySelector("input[name=emplyr_id]").value;
+		$.ajax({
+			url : 'checkDupleId.do',
+			type : 'post',
+			data : {
+				"id" : id
+			},
+			success : function(data) {
+				console.log(data);
+				if (data.status == "OK") {
+					alert(data.result);
+// 					document.querySelector("input[name=checkDupleId]").value = 1;
+				} else {
+					alert("내부서버 오류입니다. 관리자에게 문의하십시오");
+				}
+			}
+		})
+	});
+	
+	function registMember() {
+		document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
+		memberVO.submit();
+	}
 
-function listMenu(){
-	document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
-	memberVO.submit();
-}
+	function listMenu() {
+		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
+		memberVO.submit();
+	}
+});
 </script>
 </head>
 <body>
@@ -34,7 +57,7 @@ function listMenu(){
 								<div class="col-9 input-group">
 									<input type="text" class="form-control" name="emplyr_id" value="${vo.emplyr_id }">
 									<div class="input-group-append">
-										<button type="submit" class="btn btn-md btn-default" onclick="">중복확인</button>
+										<button type="button" class="btn btn-md btn-default" id="checkDupleId">중복확인</button>
 									</div>
 								</div>
 							</div>
@@ -109,7 +132,7 @@ function listMenu(){
 									<label for="upper_menu_no" class="col-form-label">성별</label>
 								</div>
 								<div class="col-9">
-									<select class="custom-select">
+									<select class="custom-select" name="sexdstn_code">
 										<option>--선택하세요--</option>
 										<option value="m">남자</option>
 										<option value="f">여자</option>
@@ -171,7 +194,7 @@ function listMenu(){
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<%-- 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
@@ -180,8 +203,8 @@ function listMenu(){
 									<input type="text" class="form-control" name="emplyr_sttus_code" value="${vo.emplyr_sttus_code }">
 								</div>
 							</div>
-						</div>
-						
+						</div> --%>
+
 						<div class="row">
 							<div class="col-9"></div>
 							<div class="col-3">
@@ -198,6 +221,7 @@ function listMenu(){
 					<!-- /.card-body -->
 				</div>
 			</div>
+			<input type="hidden" name="checkDupleId">
 		</form>
 	</section>
 </body>

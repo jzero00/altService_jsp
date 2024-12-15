@@ -72,4 +72,12 @@ public class MemberServiceImpl implements MemberService {
 			mMapper.deleteMemberManage(id);
 		}
 	}
+
+	@Override
+	public boolean getMemeberDupleCheck(String id) throws SQLException {
+		boolean flag = false;
+		int count = mMapper.selectCheckDupleId(id);
+		if(count == 0) flag = true;
+		return flag;
+	}
 }

@@ -58,27 +58,27 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th style="width: 10px"><input type="checkbox"></th>
-						<th>ID</th>
-						<th>사용자이름</th>
-						<th>사용자이메일</th>
-						<th>전화번호</th>
-						<th>등록일</th>
-						<th>가입상태</th>
+						<th class="text-center">번호</th>
+						<th class="text-center" style="width: 10px"><input type="checkbox"></th>
+						<th class="text-center">ID</th>
+						<th class="text-center">사용자이름</th>
+						<th class="text-center">사용자이메일</th>
+						<th class="text-center">전화번호</th>
+						<th class="text-center">등록일</th>
+						<th class="text-center">가입상태</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
 						<tr id="" onclick="memberManageDtl(this); return false;">
-							<td>${list.list_no }</td>
-							<td><input type="checkbox" onclick="checkbox(this,event)"></td>
-							<td id="id">${list.emplyr_id }</td>
-							<td>${list.user_nm }</td>
-							<td>${list.email_adres }</td>
-							<td>${list.area_no} - ${list.house_middle_telno } - ${list.house_end_telno }</td>
-							<td><fmt:formatDate value="${list.sbscrb_de }" pattern="yyyy-MM-dd"/></td>
-							<td>${list.emplyr_sttus_code }</td>
+							<td class="text-center">${list.list_no }</td>
+							<td class="text-center"><input type="checkbox" onclick="checkbox(this,event)"></td>
+							<td class="text-center" id="id">${list.emplyr_id }</td>
+							<td class="text-center">${list.user_nm }</td>
+							<td class="text-center">${list.email_adres }</td>
+							<td class="text-center">${list.area_no} - ${list.house_middle_telno } - ${list.house_end_telno }</td>
+							<td class="text-center"><fmt:formatDate value="${list.sbscrb_de }" pattern="yyyy-MM-dd"/></td>
+							<td class="text-center">${list.emplyr_sttus_code }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -158,11 +158,8 @@ function deleteMember(){
 
 	            alert(err.resData[0].errorMsg);
 			}
-		})
+		});
 	}
 }
-
-// window.addEventListener("DOMContentLoaded",deleteMember);
-// window.addEventListener("DOMContentLoaded",memberManageDtl);
 </script>
 </html>

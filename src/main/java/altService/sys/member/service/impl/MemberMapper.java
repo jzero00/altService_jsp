@@ -23,5 +23,7 @@ public interface MemberMapper {
 	public MemberManageVO selectMemberManageDetail(MemberManageVO vo) throws SQLException;
 
 	public void deleteMemberManage(String id) throws SQLException;
+
+	public int selectCheckDupleId(String id) throws SQLException;
 	
 }

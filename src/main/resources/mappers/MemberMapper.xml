@@ -27,12 +27,12 @@
 		INSERT INTO
 		altservice.comtnemplyrinfo
 		(emplyr_id, user_nm, password,
-		password_hint, password_cnsr, area_no, sexdstn_code,
+		password_hint, password_cnsr, area_no, sexdstn_code, email_adres,
 		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de)
 		VALUES
 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
-		#{password_cnsr}, #{area_no}, #{sexdstn_code},
-		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, #{emplyr_sttus_code}, now())
+		#{password_cnsr}, #{area_no}, #{sexdstn_code}, #{email_adres}
+		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, 'r', now())
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
@@ -40,6 +40,7 @@
 		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE DELETE_AT = 'n'	<include refid="search" />)) r, altservice.comtnemplyrinfo c
 		WHERE DELETE_AT = 'n'
 		<include refid="search" />
+		ORDER BY c.SBSCRB_DE DESC
 		LIMIT #{perPageNum} OFFSET #{offset}
 	</select>
 
@@ -63,4 +64,10 @@
 		SET DELETE_AT = 'Y'
 		WHERE emplyr_id = #{emplyr_id}
 	</delete>
+	
+	<select id="selectCheckDupleId" parameterType="str" resultType="int">
+		SELECT COUNT(*) AS cnt
+		FROM altservice.comtnemplyrinfo
+		WHERE emplyr_id = #{emplyr_id}
+	</select>
 </mapper>

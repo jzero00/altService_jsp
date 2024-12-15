@@ -18,4 +18,6 @@ public interface MemberService {
 
 	public void deleteMemberManage(String id) throws SQLException;
 
+	public boolean getMemeberDupleCheck(String id) throws SQLException;
+
 }
