@@ -6,28 +6,13 @@
 <meta charset="UTF-8">
 <title>Diebock</title>
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-	let checkDupleButton = document.querySelector("button[id=checkDupleId]");
-	checkDupleButton.addEventListener('click',function (){
-		let id = document.querySelector("input[name=emplyr_id]").value;
-		$.ajax({
-			url : 'checkDupleId.do',
-			type : 'post',
-			data : {
-				"id" : id
-			},
-			success : function(data) {
-				console.log(data);
-				if (data.status == "OK") {
-					alert(data.result);
-// 					document.querySelector("input[name=checkDupleId]").value = 1;
-				} else {
-					alert("내부서버 오류입니다. 관리자에게 문의하십시오");
-				}
-			}
-		})
+	document.addEventListener("DOMContentLoaded", function(){
+		let checkDupleButton = document.querySelector("button[id=checkDupleId]");
+		checkDupleButton.addEventListener('click',checkDupleId);
+		let idInput = document.querySelector("input[name=emplyr_id]");
+		idInput.addEventListener('keydown',changeDupleCheck);
 	});
-	
+
 	function registMember() {
 		document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
 		memberVO.submit();
@@ -37,7 +22,33 @@ document.addEventListener("DOMContentLoaded", function(){
 		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
 		memberVO.submit();
 	}
-});
+	
+	function checkDupleId(){
+		let id = document.querySelector("input[name=emplyr_id]").value;
+		$.ajax({
+			url : 'checkDupleId.do',
+			type : 'post',
+			data : {
+				"id" : id
+			},
+			success : function(data) {
+				console.log(data);
+				if (data.status == "OK" && data.result == "사용가능") {
+					alert(data.result);
+					document.querySelector("input[name=checkDupleId]").value = 1;
+				} else if (data.status == "OK" && data.result == "사용불가"){
+					alert(data.result);
+				} else {
+					alert("내부서버 오류입니다. 관리자에게 문의하십시오");
+				}
+			}
+		})
+	}
+	
+	function changeDupleCheck(){
+		let checkDuple = document.querySelector("input[name=checkDupleId]");
+		checkDuple.value = "";
+	}
 </script>
 </head>
 <body>
