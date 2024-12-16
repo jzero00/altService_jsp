@@ -15,13 +15,28 @@
 
 	function registMember() {
 		document.memberVO.action = "<c:url value="/sys/memberReg.do"/>";
-		memberVO.submit();
+		let flag = passwordCheck();
+		if(flag){
+			console.log("통과");
+		} else {
+			console.log("비밀번호 확인");
+		}
+// 		memberVO.submit();
 	}
 
 	function listMenu() {
 		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
 		memberVO.submit();
 	}
+	
+	function passwordCheck(){
+		let flag = false;
+		let password = document.querySelector("input[name=password]").value;
+		let password_chk = document.querySelector("input[name=password_chk]").value;
+		
+		if(password == password_chk) flag = true;
+		return flag;
+	} 
 	
 	function checkDupleId(){
 		let id = document.querySelector("input[name=emplyr_id]").value;

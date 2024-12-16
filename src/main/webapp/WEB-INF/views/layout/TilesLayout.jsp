@@ -6,19 +6,23 @@
 <title><tiles:getAsString name="title" /></title>
 <tiles:insertAttribute name="head" />
 </head>
-<body class="sidebar-mini layout-navbar-fixed sidebar-open" style="height: auto;">
+<body class="layout-top-nav" style="height: auto;">
 	<div class="wrapper">
 		<!-- sidebar s -->
-		<tiles:insertAttribute name="sidebar" />
+<%-- 		<tiles:insertAttribute name="sidebar" /> --%>
 		<!-- sidebar e -->
 
-		<!-- 	<navbar id="navbar"> -->
-		<%-- 		<tiles:insertAttribute name="navbar" /> --%>
-		<!-- 	</navbar> -->
+<!-- 		<navbar id="navbar"> -->
+			<tiles:insertAttribute name="navbar" />
+<!-- 		</navbar> -->
 		
 		<!-- content s -->
 		<div class="content-wrapper">
-			<tiles:insertAttribute name="content" />
+			<div class="content">
+				<div class="container">
+					<tiles:insertAttribute name="content" />
+				</div>
+			</div>
 		</div>
 		<!-- content e -->
 	</div>

@@ -13,8 +13,10 @@
 				<tr>
 					<th>
 						<div class="row">
-							<div class="col-3">사용자관리 목록</div>
-							<div class="col-3">
+							<div class="col-12">사용자관리 목록</div>
+						</div>
+						<div class="row">
+							<div class="col-4">
 								<div class="form-group row">
 									<div class="col-6">
 									<select class="form-control" id="emplyrSttusCode">
@@ -32,7 +34,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-4">
 								<div class="form-group row">
 									<label for="menu" class="col-sm-3 col-form-label">메뉴명 : </label>
 									<div class="col-sm-9">
@@ -40,7 +42,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-4">
 								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary" onclick="searchMember(); return false;">조회</button>
 								</div>
