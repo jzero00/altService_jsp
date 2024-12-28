@@ -11,6 +11,8 @@
 		checkDupleButton.addEventListener('click',checkDupleId);
 		let idInput = document.querySelector("input[name=emplyr_id]");
 		idInput.addEventListener('keydown',changeDupleCheck);
+		let passwordChkInput = document.querySelector("input[name=password_chk]");
+		passwordChkInput.addEventListener('keyup',passwordCheckAlarm);
 	});
 
 	function registMember() {
@@ -22,6 +24,20 @@
 			console.log("비밀번호 확인");
 		}
 // 		memberVO.submit();
+	}
+	
+	function passwordCheckAlarm(){
+		let passwordInput = document.querySelector("input[name=password]");
+		let passwordChkInput = document.querySelector("input[name=password_chk]");
+		
+		let passwordInputVal = passwordInput.value;
+		let passwordChkInputVal = passwordChkInput.value;
+		
+		if(passwordInputVal != passwordChkInputVal){
+			console.log("비밀번호가 일치하지 않습니다.")
+		} else if(passwordInputVal == passwordChkInputVal){
+			console.log("비밀번호 일치");
+		}
 	}
 
 	function listMenu() {
