@@ -27,16 +27,24 @@
 	}
 	
 	function passwordCheckAlarm(){
-		let passwordInput = document.querySelector("input[name=password]");
-		let passwordChkInput = document.querySelector("input[name=password_chk]");
+		const passwordInput = document.querySelector("input[name=password]");
+		const passwordChkInput = document.querySelector("input[name=password_chk]");
+		const resultP = document.querySelector("p[id=pwd_res]");
 		
-		let passwordInputVal = passwordInput.value;
-		let passwordChkInputVal = passwordChkInput.value;
+		const passwordInputVal = passwordInput.value;
+		const passwordChkInputVal = passwordChkInput.value;
 		
 		if(passwordInputVal != passwordChkInputVal){
-			console.log("비밀번호가 일치하지 않습니다.")
+			if (passwordChkInputVal == null || passwordChkInputVal == ''){
+				resultP.innerHTML = "비밀번호확인란을 입력해주십시오.";
+				resultP.style.color = "red";
+				return;
+			}
+			resultP.innerHTML = "비밀번호가 일치하지 않습니다.";
+			resultP.style.color = "red";
 		} else if(passwordInputVal == passwordChkInputVal){
-			console.log("비밀번호 일치");
+			resultP.innerHTML =  "비밀번호가 일치합니다.";
+			resultP.style.color = "green";
 		}
 	}
 
@@ -131,6 +139,8 @@
 								</div>
 								<div class="col-9">
 									<input type="password" class="form-control" name="password_chk">
+									<br>
+									<p id="pwd_res"></p>
 								</div>
 							</div>
 						</div>
