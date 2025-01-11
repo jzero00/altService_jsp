@@ -23,7 +23,13 @@
 		} else {
 			console.log("비밀번호 확인");
 		}
-// 		memberVO.submit();
+		
+		let dupleCheckFlag = passDupleId();
+		if(!dupleCheckFlag) {
+			console.log("ID 중복체크 필요")
+			return false;
+		}
+		memberVO.submit();
 	}
 	
 	function passwordCheckAlarm(){
@@ -87,6 +93,14 @@
 	function changeDupleCheck(){
 		let checkDuple = document.querySelector("input[name=checkDupleId]");
 		checkDuple.value = "";
+	}
+	
+	function passDupleId(){
+		let checkDuple = document.querySelector("input[name=checkDupleId]").value;
+		if(checkDuple == 1) {
+			return true;
+		}
+		return false;
 	}
 </script>
 </head>
