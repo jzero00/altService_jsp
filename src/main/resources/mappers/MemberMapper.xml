@@ -24,15 +24,21 @@
 	</select>
 
 	<insert id="insertMemberManage" parameterType="memberManage">
-		INSERT INTO
-		altservice.comtnemplyrinfo
-		(emplyr_id, user_nm, password,
-		password_hint, password_cnsr, area_no, sexdstn_code, email_adres,
-		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de)
-		VALUES
-		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint},
-		#{password_cnsr}, #{area_no}, #{sexdstn_code}, #{email_adres}
-		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, 'r', now())
+<!-- 		INSERT INTO -->
+<!-- 		altservice.comtnemplyrinfo -->
+<!-- 		(emplyr_id, user_nm, password,password_hint, -->
+<!-- 		 password_cnsr, area_no, sexdstn_code, email_adres, -->
+<!-- 		house_middle_telno, house_end_telno, house_adres, zip, emplyr_sttus_code, sbscrb_de) -->
+<!-- 		VALUES -->
+<!-- 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, -->
+<!-- 		#{password_cnsr}, #{area_no}, #{sexdstn_code}, #{email_adres} -->
+<!-- 		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, 'r', now()) -->
+		
+		
+		INSERT INTO altservice.comtnemplyrinfo
+		(EMPLYR_ID,  USER_NM, PASSWORD,   SEXDSTN_CODE,   HOUSE_ADRES, PASSWORD_HINT, PASSWORD_CNSR, HOUSE_END_TELNO, AREA_NO, DETAIL_ADRES, ZIP,   EMAIL_ADRES,  HOUSE_MIDDLE_TELNO,   EMPLYR_STTUS_CODE,   SBSCRB_DE, DELETE_AT)
+		VALUES 
+		(#{emplyr_id}, #{user_nm}, #{password}, #{sexdstn_code}, #{house_adres}, #{password_hint}, #{password_cnsr}, #{house_end_telno}, #{area_no}, #{detail_adres}, #{zip}, #{email_adres}, #{house_middle_telno}, 'r', now(), 'n')
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
