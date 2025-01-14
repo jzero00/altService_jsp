@@ -60,8 +60,7 @@
 	<select id="selectMemberManageDetail"
 		parameterType="memberManage" resultType="memberManage">
 		SELECT *
-		FROM
-		altservice.comtnemplyrinfo
+		FROM	altservice.comtnemplyrinfo
 		WHERE emplyr_id = #{emplyr_id}
 	</select>
 	

@@ -6,8 +6,34 @@
 <meta charset="UTF-8">
 <title>Diebock</title>
 <script>
-	function modifyMember(){
-		document.memberVO.action = "<c:url value="/sys/memberModView.do"/>";
+	document.addEventListener("DOMContentLoaded", function(){
+		let checkDupleButton = document.querySelector("button[id=checkDupleId]");
+		checkDupleButton.addEventListener('click',checkDupleId);
+		let idInput = document.querySelector("input[name=emplyr_id]");
+		idInput.addEventListener('keydown',changeDupleCheck);
+		let passwordChkInput = document.querySelector("input[name=password_chk]");
+		passwordChkInput.addEventListener('keyup',passwordCheckAlarm);
+	});
+
+	function modifyMember() {
+		document.memberVO.action = "<c:url value="/sys/memberMod.do"/>";
+		let flag = passwordCheck();
+		if(flag){
+			console.log("통과");
+		} else {
+			console.log("비밀번호 확인");
+		}
+		
+		let dupleCheckFlag = passDupleId();
+		if(!dupleCheckFlag) {
+			console.log("ID 중복체크 필요")
+			return false;
+		}
+		memberVO.submit();
+	}
+	
+	function listMenu() {
+		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
 		memberVO.submit();
 	}
 </script>
@@ -18,7 +44,7 @@
 			<div class="container-fluid">
 				<div class="card card-info">
 					<div class="card-header">
-						<h3 class="card-title">회원관리 등록</h3>
+						<h3 class="card-title">회원관리 수정</h3>
 					</div>
 					<div class="card-body">
 						<div class="form-group">
@@ -26,7 +52,12 @@
 								<div class="col-3">
 									<label for="emplyr_id" class="col-form-label">회원ID</label>
 								</div>
-								<div class="col-9">${vo.emplyr_id }</div>
+								<div class="col-9 input-group">
+									<input type="text" class="form-control" name="emplyr_id" value="${vo.emplyr_id }">
+									<div class="input-group-append">
+										<button type="button" class="btn btn-md btn-default" id="checkDupleId">중복확인</button>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group">
@@ -34,7 +65,9 @@
 								<div class="col-3">
 									<label for="user_nm" class="col-form-label">회원이름</label>
 								</div>
-								<div class="col-9">${vo.user_nm }</div>
+								<div class="col-9">
+									<input type="text" class="form-control" name="user_nm" value="${vo.user_nm }">
+								</div>
 							</div>
 						</div>
 						<div class="form-group">
@@ -43,12 +76,11 @@
 									<label for="upper_menu_no" class="col-form-label">성별</label>
 								</div>
 								<div class="col-9">
-									<c:if test="${vo.sexdstn_code eq 'm'}">
-									남자
-									</c:if>
-									<c:if test="${vo.sexdstn_code eq 'f'}">
-									여자
-									</c:if>
+									<select class="custom-select" name="sexdstn_code">
+										<option>--선택하세요--</option>
+										<option value="m" <c:if test="${vo.sexdstn_code eq 'm' }">selected</c:if>>남자</option>
+										<option value="f" <c:if test="${vo.sexdstn_code eq 'f' }">selected</c:if>>여자</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -60,7 +92,7 @@
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											${vo.area_no } - ${vo.house_middle_telno } - ${vo.house_end_telno }
+											<input type="text" class="form-control" name="area_no" style="width: 100px;"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;">
 										</div>
 									</div>
 								</div>
@@ -72,7 +104,7 @@
 									<label for="email_adres" class="col-form-label">이메일주소</label>
 								</div>
 								<div class="col-9">
-									${vo.email_adres }
+									<input type="text" class="form-control" name="email_adres">
 								</div>
 							</div>
 						</div>
@@ -82,7 +114,7 @@
 									<label for="zip" class="col-form-label">우편번호</label>
 								</div>
 								<div class="col-9">
-									${vo.zip }
+									<input type="text" class="form-control" name="zip" value="${vo.zip }">
 								</div>
 							</div>
 						</div>
@@ -92,7 +124,7 @@
 									<label for="house_adres" class="col-form-label">주소</label>
 								</div>
 								<div class="col-9">
-									${vo.house_adres }
+									<input type="text" class="form-control" name="house_adres" value="${vo.house_adres }">
 								</div>
 							</div>
 						</div>
@@ -102,21 +134,20 @@
 									<label for="detail_adres" class="col-form-label">상세주소</label>
 								</div>
 								<div class="col-9">
-									${vo.detail_adres }
+									<input type="text" class="form-control" name="detail_adres" value="${vo.detail_adres }">
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<%-- 						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
-									<c:if test="${vo.emplyr_sttus_code eq '1' }">승인</c:if>
-									<c:if test="${vo.emplyr_sttus_code eq '2' }">미승인</c:if>
+									<input type="text" class="form-control" name="emplyr_sttus_code" value="${vo.emplyr_sttus_code }">
 								</div>
 							</div>
-						</div>
+						</div> --%>
 
 						<div class="row">
 							<div class="col-9"></div>
@@ -134,7 +165,7 @@
 					<!-- /.card-body -->
 				</div>
 			</div>
-			<input type="hidden" name="emplyr_id" value="${vo.emplyr_id}">
+			<input type="hidden" name="checkDupleId">
 		</form>
 	</section>
 </body>

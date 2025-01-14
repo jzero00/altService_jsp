@@ -151,6 +151,25 @@ public class MemberController {
 		return mnv;
 	}
 	
+	@PostMapping("/memberModView.do")
+	public ModelAndView memberModView(ModelAndView mnv, String emplyr_id) {
+		String url = "/sys" + rootView + "memberModView" + suffix;
+		MemberManageVO reqVO = new MemberManageVO();
+		reqVO.setEmplyr_id(emplyr_id);
+		
+		MemberManageVO resVO;
+		try {
+			resVO = mService.getMemberManageDetail(reqVO);
+			mnv.addObject("vo", resVO);
+			mnv.setViewName(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mnv;
+	}
+	
 	@PostMapping("/memberDelete.do")
 	public ModelAndView memverDelete(ModelAndView mnv, String id) {
 		String url = "alert";
