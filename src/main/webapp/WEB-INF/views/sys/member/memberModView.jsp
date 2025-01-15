@@ -53,10 +53,7 @@
 									<label for="emplyr_id" class="col-form-label">회원ID</label>
 								</div>
 								<div class="col-9 input-group">
-									<input type="text" class="form-control" name="emplyr_id" value="${vo.emplyr_id }">
-									<div class="input-group-append">
-										<button type="button" class="btn btn-md btn-default" id="checkDupleId">중복확인</button>
-									</div>
+									<input type="text" readonly="readonly" class="form-control" name="emplyr_id" value="${vo.emplyr_id }">
 								</div>
 							</div>
 						</div>
