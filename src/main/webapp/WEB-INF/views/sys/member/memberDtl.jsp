@@ -112,8 +112,8 @@
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
-									<c:if test="${vo.emplyr_sttus_code eq '1' }">승인</c:if>
-									<c:if test="${vo.emplyr_sttus_code eq '2' }">미승인</c:if>
+									<c:if test="${vo.emplyr_sttus_code eq 'a' }">승인</c:if>
+									<c:if test="${vo.emplyr_sttus_code eq 'n' }">미승인</c:if>
 								</div>
 							</div>
 						</div>

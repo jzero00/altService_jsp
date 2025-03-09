@@ -89,7 +89,7 @@
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											<input type="text" class="form-control" name="area_no" style="width: 100px;"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;">
+											<input type="text" class="form-control" name="area_no" style="width: 100px;" value="${vo.area_no }"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;" value="${vo.house_middle_telno }"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;" value="${vo.house_end_telno }">
 										</div>
 									</div>
 								</div>
@@ -101,7 +101,7 @@
 									<label for="email_adres" class="col-form-label">이메일주소</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="email_adres">
+									<input type="text" class="form-control" name="email_adres" value="${vo.email_adres }">
 								</div>
 							</div>
 						</div>
