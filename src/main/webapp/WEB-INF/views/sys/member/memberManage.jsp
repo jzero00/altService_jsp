@@ -52,6 +52,9 @@
 								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary" onclick="insertMember(); return false;">등록</button>
 								</div>
+								<div class="btn-group">
+									<button type="button" class="btn bg-gradient-primary" onclick="downloadExcelMember(); return false;">엑셀등록파일 다운로드</button>
+								</div>
 							</div>
 						</div>
 					</th>
@@ -162,6 +165,11 @@ function deleteMember(){
 			}
 		});
 	}
+}
+
+function downloadExcelMember(){
+	console.log("excel다운로드");
+	location.href="/download/memberManageExcel.do";
 }
 </script>
 </html>
