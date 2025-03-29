@@ -63,6 +63,13 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
+		<!-- apache poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>5.0.0</version>
+		</dependency>
+		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
