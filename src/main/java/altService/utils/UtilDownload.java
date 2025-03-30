@@ -1,10 +1,13 @@
 package altService.utils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
@@ -27,19 +30,26 @@ public class UtilDownload {
 		
 		CellStyle cellStyle = workbook.createCellStyle();
 		
-		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
-		cellStyle.setWrapText(true);
+		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+//		cellStyle.setWrapText(true);
 		
 		Row headerRow = sheet.createRow(rowNo++);
-		headerRow.createCell(0).setCellValue("ID");
-		headerRow.createCell(1).setCellValue("이름");
-		headerRow.createCell(2).setCellValue("성별");
-		headerRow.createCell(3).setCellValue("전화번호");
-		headerRow.createCell(4).setCellValue("이메일주소");
-		headerRow.createCell(5).setCellValue("우편번호");
-		headerRow.createCell(6).setCellValue("주소");
-		headerRow.createCell(7).setCellValue("상세주소");
+		List<String> headerList = new ArrayList<>();
+		headerList.add("ID");
+		headerList.add("이름");
+		headerList.add("성별");
+		headerList.add("전화번호");
+		headerList.add("이메일주소");
+		headerList.add("우편번호");
+		headerList.add("주소");
+		headerList.add("상세주소");
+		
+		for(int i = 0; i < headerList.size(); i++) {
+			Cell headerCell = headerRow.createCell(i);
+			headerCell.setCellValue(headerList.get(i));
+			headerCell.setCellStyle(cellStyle);			
+		}
 		
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-Disposition", "attachment;filename=registUser.xls");
