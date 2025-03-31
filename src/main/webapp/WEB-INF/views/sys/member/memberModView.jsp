@@ -17,20 +17,9 @@
 
 	function modifyMember() {
 		document.memberVO.action = "<c:url value="/sys/memberMod.do"/>";
-		let flag = passwordCheck();
-		if(flag){
-			console.log("통과");
-		} else {
-			console.log("비밀번호 확인");
-		}
-		
-		let dupleCheckFlag = passDupleId();
-		if(!dupleCheckFlag) {
-			console.log("ID 중복체크 필요")
-			return false;
-		}
 		memberVO.submit();
 	}
+	
 	
 	function listMenu() {
 		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
@@ -135,17 +124,22 @@
 								</div>
 							</div>
 						</div>
-						<%-- 						<div class="form-group">
+						<div class="form-group">
 							<div class="row">
 								<div class="col-3">
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
-									<input type="text" class="form-control" name="emplyr_sttus_code" value="${vo.emplyr_sttus_code }">
+									<select class="form-control" id="emplyrSttusCode" name="emplyr_sttus_code">
+										<option value="">상태(전체)</option>
+										<option value="r" <c:if test="${vo.emplyr_sttus_code eq 'r'}">selected</c:if>>신청</option>
+										<option value="a" <c:if test="${vo.emplyr_sttus_code eq 'a'}">selected</c:if>>승인</option>
+										<option value="e" <c:if test="${vo.emplyr_sttus_code eq 'e'}">selected</c:if>>만료</option>
+										<option value="n" <c:if test="${vo.emplyr_sttus_code eq 'n'}">selected</c:if>>미승인</option>
+									</select>
 								</div>
 							</div>
-						</div> --%>
-
+						</div>
 						<div class="row">
 							<div class="col-9"></div>
 							<div class="col-3">
@@ -156,13 +150,11 @@
 							</div>
 						</div>
 						<!-- /.row -->
-
 						<!-- /input-group -->
 					</div>
 					<!-- /.card-body -->
 				</div>
 			</div>
-			<input type="hidden" name="checkDupleId">
 		</form>
 	</section>
 </body>

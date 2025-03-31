@@ -75,4 +75,18 @@
 		FROM altservice.comtnemplyrinfo
 		WHERE emplyr_id = #{emplyr_id}
 	</select>
+	
+	<update id="updateMemberManage" parameterType="memberManage">
+		UPDATE altservice.comtnemplyrinfo
+		SET
+		user_nm = #{user_nm},
+		sexdstn_code = #{sexdstn_code},
+		area_no = #{area_no},
+		house_middle_telno = #{house_middle_telno},
+		house_end_telno = #{house_end_telno},
+		email_adres = #{email_adres},
+		detail_adres = #{detail_adres},
+		emplyr_sttus_code = #{emplyr_sttus_code}
+		WHERE emplyr_id = #{emplyr_id}
+	</update>
 </mapper>

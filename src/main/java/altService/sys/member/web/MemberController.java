@@ -102,7 +102,6 @@ public class MemberController {
 			mnv.addObject("result", "사용자 등록 완료");
 			mnv.setViewName(url);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -166,12 +165,31 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return mnv;
+	}
+	
+	@PostMapping("/memberMod.do")
+	public ModelAndView memberMod(ModelAndView mnv, MemberManageVO vo) {
+		Map<String, Object> paramMap = new HashMap<>();
+		String url = "";
+		paramMap.put("vo", vo);
+		
+		try {
+			mService.modifyMemberManage(paramMap);
+		url = "/alert";
+		
+		mnv.addObject("url","/sys/memberManage.do");
+		mnv.addObject("result","사용자 수정 완료");
+		mnv.setViewName(url);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return mnv;
 	}
 	
 	@PostMapping("/memberDelete.do")
-	public ModelAndView memverDelete(ModelAndView mnv, String id) {
+	public ModelAndView memberDelete(ModelAndView mnv, String id) {
 		String url = "alert";
 		String redirectUrl = "/sys/memberManage.do";
 		

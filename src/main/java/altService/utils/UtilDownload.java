@@ -32,7 +32,6 @@ public class UtilDownload {
 		
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
 		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-//		cellStyle.setWrapText(true);
 		
 		Row headerRow = sheet.createRow(rowNo++);
 		List<String> headerList = new ArrayList<>();

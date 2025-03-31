@@ -80,4 +80,10 @@ public class MemberServiceImpl implements MemberService {
 		if(count == 0) flag = true;
 		return flag;
 	}
+
+	@Override
+	public void modifyMemberManage(Map<String, Object> paramMap) throws SQLException {
+		MemberManageVO vo = (MemberManageVO) paramMap.get("vo");
+		mMapper.updateMemberManage(vo);
+	}
 }
