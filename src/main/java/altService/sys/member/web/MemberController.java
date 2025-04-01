@@ -211,4 +211,11 @@ public class MemberController {
 		mnv.setViewName(url);
 		return mnv;
 	}
+	
+	@RequestMapping("/insertMemberManageExcelView.do")
+	public ModelAndView insertMemberManageExcelView(ModelAndView mnv) {
+		String url = "/sys" + rootView + "insertMemberExcel" + suffix;
+		mnv.setViewName(url);
+		return mnv;
+	}
 }
