@@ -21,7 +21,7 @@
 							<label for="exampleInputFile">엑셀 등록</label>
 							<div class="input-group">
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="exampleInputFile" onchange="changeFile()"> <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+									<input type="file" class="custom-file-input" id="exampleInputFile" onchange="changeFile()" name="excelFile"> <label class="custom-file-label" for="exampleInputFile">Choose file</label>
 								</div>
 								<div class="input-group-append">
 									<span class="input-group-text">등록하기</span>
