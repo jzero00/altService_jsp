@@ -86,4 +86,16 @@ public class MemberServiceImpl implements MemberService {
 		MemberManageVO vo = (MemberManageVO) paramMap.get("vo");
 		mMapper.updateMemberManage(vo);
 	}
+
+	@Override
+	public void registMemberManageByExcel(List<MemberManageVO> list) throws SQLException {
+		for(MemberManageVO vo : list) {
+			String id = vo.getEmplyr_id();
+			/*중복체크후 insert*/
+			int count = mMapper.selectCheckDupleId(id);
+			if(count == 0) {
+				mMapper.insertMemberManage(vo);
+			}
+		}
+	}
 }

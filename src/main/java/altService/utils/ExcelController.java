@@ -1,5 +1,6 @@
 package altService.utils;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +65,12 @@ public class ExcelController {
 		}
 		
 		/*중복체크는 service에서 처리 insert*/
+		try {
+			mService.registMemberManageByExcel(list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

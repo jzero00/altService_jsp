@@ -1,6 +1,7 @@
 package altService.sys.member.service;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import altService.exception.LoginFailException;
@@ -21,5 +22,7 @@ public interface MemberService {
 	public boolean getMemeberDupleCheck(String id) throws SQLException;
 
 	public void modifyMemberManage(Map<String, Object> paramMap) throws SQLException;
+
+	public void registMemberManageByExcel(List<MemberManageVO> list) throws SQLException;
 
 }
