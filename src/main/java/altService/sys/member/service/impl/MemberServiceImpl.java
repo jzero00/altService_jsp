@@ -22,8 +22,8 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mMapper;
 	
 	@Override
-	public MemberVO login(MemberVO vo) throws SQLException, LoginFailException {
-		MemberVO member = null;
+	public MemberManageVO login(MemberVO vo) throws SQLException, LoginFailException {
+		MemberManageVO member = null;
 		member = mMapper.login(vo);
 		System.out.println(member.toString());
 		

@@ -12,7 +12,7 @@ import altService.utils.SearchCriteria;
 @Repository("MemberMapper")
 public interface MemberMapper {
 	
-	public MemberVO login(MemberVO vo) throws SQLException;
+	public MemberManageVO login(MemberVO vo) throws SQLException;
 
 	public void insertMemberManage(MemberManageVO vo) throws SQLException;
 	

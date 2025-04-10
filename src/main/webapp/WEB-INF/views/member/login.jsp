@@ -57,7 +57,7 @@ body {
 </head>
 <body>
 <!-- div s -->
-<form id="frm" name="frm" class="form-signin" action="/sys/member/login.do" method="post">
+<form id="frm" name="frm" class="form-signin" action="/sys/login.do" method="post">
 <!--   <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 <!--   <h1 class="h3 mb-3 font-weight-normal">로그인해주십시오</h1> -->
   <label for="name" class="sr-only">이름</label>

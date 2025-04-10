@@ -43,7 +43,7 @@ public class MemberController {
 	@PostMapping("/login.do")
 	public ModelAndView postLogin(ModelAndView mnv, MemberVO vo, HttpServletRequest req) {
 
-		MemberVO loginUser = null;
+		MemberManageVO loginUser = null;
 		try {
 			loginUser = mService.login(vo);
 			HttpSession session = req.getSession();

@@ -9,7 +9,7 @@ import altService.utils.SearchCriteria;
 
 public interface MemberService {
 
-	public MemberVO login(MemberVO vo) throws SQLException, LoginFailException;
+	public MemberManageVO login(MemberVO vo) throws SQLException, LoginFailException;
 
 	public void registMemberManage(Map<String, Object> paramMap) throws SQLException;
 	

@@ -16,11 +16,11 @@
 		</if>
 	</sql>
 	
-	<select id="login" parameterType="member" resultType="member">
+	<select id="login" parameterType="member" resultType="memberManage">
 		SELECT *
-		FROM altservice.member
-		WHERE altNo = #{altNo}
-		AND pwd = #{pwd}
+		FROM altservice.comtnemplyrinfo
+		WHERE emplyr_id = #{altNo}
+		AND password = #{pwd}
 	</select>
 
 	<insert id="insertMemberManage" parameterType="memberManage">
