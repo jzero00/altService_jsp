@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="${request.getContextPath() }/resources/js/sha/core.min.js"></script>
+<script src="${request.getContextPath() }/resources/js/sha/sha256.min.js"></script>
 <style>
 html,
 body {
@@ -55,13 +57,14 @@ body {
 </head>
 <body>
 <!-- div s -->
-<form id="frm" class="form-signin" action="/sys/member/login.do" method="post">
+<form id="frm" name="frm" class="form-signin" action="/sys/member/login.do" method="post">
 <!--   <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 <!--   <h1 class="h3 mb-3 font-weight-normal">로그인해주십시오</h1> -->
   <label for="name" class="sr-only">이름</label>
-  <input type="text" id="name" name="altNo" class="form-control" placeholder="이름을 입력해주세요" required="" autofocus="">
+  <input type="text" id="usid" name="altNo" class="form-control" placeholder="이름을 입력해주세요" required="" autofocus="">
   <label for="password" class="sr-only">Password</label>
-  <input type="password" id="password" name="pwd" class="form-control" placeholder="Password" required="">
+  <input type="password" id="password" class="form-control" placeholder="Password" required="">
+  <input type="hidden"  name="pwd" id="postPassword">
 <!--   <div class="checkbox mb-3"> -->
 <!--     <label> -->
 <!--       <input type="checkbox" value="remember-me"> Remember me -->
@@ -74,7 +77,7 @@ body {
 </body>
 <script>
 function login(){
-	let form = document.querySelector('form[id=frm]');
+	/* let form = document.querySelector('form[id=frm]');
 	let inputs = form.querySelectorAll('input');
 	let blankFlag = true;
 	inputs.forEach(function(e) {
@@ -83,15 +86,28 @@ function login(){
 			if(!blankFlag) {
 				return false;
 			}
+		} */
+		if(document.getElementById("usid").value==""){
+			alert("아이디를 입력해주십시오.");
+		}else if(document.getElementById("password").value==""){
+			alert("비밀번호를 입력해주십시오.");
+		}else{
+			var shaPw = CryptoJS.SHA256(document.getElementById("password").value).toString(); 
+			document.getElementById("postPassword").value = shaPw;
+			//form 보내기
+			document.frm.submit();
 		}
-	});
+	}
+	;
 	
-	if(blankFlag){
+/* 	if(blankFlag){
+		var shaPw = CryptoJS.SHA256(document.getElementById("password").value).toString(); 
+		document.getElementById("postPassword").value = shaPw;
 		form.submit();
 	} else {
 		alert('빈값을 입력해주십시오.');
 		
 	}
-}
+} */
 </script>
 </html>
