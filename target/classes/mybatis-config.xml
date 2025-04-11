@@ -6,7 +6,10 @@
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.util.HashMap" alias="paramMap"/>
 		<typeAlias type="java.util.Map" alias="map"/>
+		
+		
 		<typeAlias type="altService.utils.SearchCriteria" alias="cri"/>
+		
 		
 		<typeAlias type="altService.sys.member.service.MemberVO" alias="member"/>
 		<typeAlias type="altService.sys.menuManage.service.MenuManageVO" alias="menuManage"/>

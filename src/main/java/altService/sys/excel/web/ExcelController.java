@@ -1,5 +1,6 @@
-package altService.utils;
+package altService.sys.excel.web;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,22 +19,23 @@ import org.springframework.web.multipart.MultipartFile;
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
 
+@RequestMapping("/excel")
 @Controller
-@RequestMapping("/excel/")
 public class ExcelController {
 	
 	@Autowired
-	MemberService mService;
+	private MemberService mService;
 
-	@PostMapping("insertMember.do")
-	public void insertMemberExcel(MultipartFile excelFile) {
+	@PostMapping("/insertMember.do")
+	public void insertMemberExcel(MultipartFile excelFile) throws IOException {
 		/*엑셀파일 처리 */
-		Workbook workbook = new HSSFWorkbook();
+		System.out.println(excelFile.getOriginalFilename());
+		Workbook workbook = new HSSFWorkbook(excelFile.getInputStream());
 		Sheet worksheet = workbook.getSheetAt(0);
 		
 		List<MemberManageVO> list = new ArrayList<>();
 		
-		for(int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
+		for(int i = 1; i < worksheet.getPhysicalNumberOfRows()-1; i++) {
 			MemberManageVO vo = new MemberManageVO();
 			
 			DataFormatter formatter = new DataFormatter();
@@ -42,6 +44,7 @@ public class ExcelController {
 			String emplyr_id = formatter.formatCellValue(row.getCell(0));
 			String user_nm = formatter.formatCellValue(row.getCell(1));
 			String sexdstn_code = formatter.formatCellValue(row.getCell(2));
+			System.out.println(row.getCell(3));
 			String area_no = formatter.formatCellValue(row.getCell(3)).substring(0,2);
 			String house_middle_telno = formatter.formatCellValue(row.getCell(3)).substring(3,6);
 			String house_end_telno = formatter.formatCellValue(row.getCell(3)).substring(7,10);
@@ -51,6 +54,8 @@ public class ExcelController {
 			String detail_adres = formatter.formatCellValue(row.getCell(7));
 			
 			vo.setEmplyr_id(emplyr_id);
+			/*비밀번호 설정 0000 암호화*/
+			vo.setPassword("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
 			vo.setUser_nm(user_nm);
 			vo.setSexdstn_code(sexdstn_code);
 			vo.setArea_no(area_no);
