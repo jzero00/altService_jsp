@@ -84,7 +84,7 @@
 							<td class="text-center" id="id">${list.emplyr_id }</td>
 							<td class="text-center">${list.user_nm }</td>
 							<td class="text-center">${list.email_adres }</td>
-							<td class="text-center">${list.area_no} - ${list.house_middle_telno } - ${list.house_end_telno }</td>
+							<td class="text-center">${list.moblphon_no }</td>
 							<td class="text-center"><fmt:formatDate value="${list.sbscrb_de }" pattern="yyyy-MM-dd"/></td>
 							<td class="text-center">${list.emplyr_sttus_code }</td>
 						</tr>

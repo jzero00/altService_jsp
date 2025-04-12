@@ -29,13 +29,12 @@ public class ExcelController {
 	@PostMapping("/insertMember.do")
 	public void insertMemberExcel(MultipartFile excelFile) throws IOException {
 		/*엑셀파일 처리 */
-		System.out.println(excelFile.getOriginalFilename());
 		Workbook workbook = new HSSFWorkbook(excelFile.getInputStream());
 		Sheet worksheet = workbook.getSheetAt(0);
 		
 		List<MemberManageVO> list = new ArrayList<>();
 		
-		for(int i = 1; i < worksheet.getPhysicalNumberOfRows()-1; i++) {
+		for(int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			MemberManageVO vo = new MemberManageVO();
 			
 			DataFormatter formatter = new DataFormatter();
@@ -44,10 +43,11 @@ public class ExcelController {
 			String emplyr_id = formatter.formatCellValue(row.getCell(0));
 			String user_nm = formatter.formatCellValue(row.getCell(1));
 			String sexdstn_code = formatter.formatCellValue(row.getCell(2));
-			System.out.println(row.getCell(3));
-			String area_no = formatter.formatCellValue(row.getCell(3)).substring(0,2);
-			String house_middle_telno = formatter.formatCellValue(row.getCell(3)).substring(3,6);
-			String house_end_telno = formatter.formatCellValue(row.getCell(3)).substring(7,10);
+			String moblphon_no = formatter.formatCellValue(row.getCell(3));
+//			String[] tel_no = formatter.formatCellValue(row.getCell(3)).split("-");
+//			String area_no = formatter.formatCellValue(row.getCell(3)).substring(0,2);
+//			String house_middle_telno = formatter.formatCellValue(row.getCell(3)).substring(4,7);
+//			String house_end_telno = formatter.formatCellValue(row.getCell(3)).substring(9,12);
 			String email_adres = formatter.formatCellValue(row.getCell(4));
 			String zip = formatter.formatCellValue(row.getCell(5));
 			String house_adres = formatter.formatCellValue(row.getCell(6));
@@ -58,9 +58,10 @@ public class ExcelController {
 			vo.setPassword("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
 			vo.setUser_nm(user_nm);
 			vo.setSexdstn_code(sexdstn_code);
-			vo.setArea_no(area_no);
-			vo.setHouse_middle_telno(house_middle_telno);
-			vo.setHouse_end_telno(house_end_telno);
+			vo.setMoblphon_no(moblphon_no);
+//			vo.setArea_no(area_no);
+//			vo.setHouse_middle_telno(house_middle_telno);
+//			vo.setHouse_end_telno(house_end_telno);
 			vo.setEmail_adres(email_adres);
 			vo.setZip(zip);
 			vo.setHouse_adres(house_adres);

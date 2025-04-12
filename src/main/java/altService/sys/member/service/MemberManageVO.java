@@ -20,6 +20,7 @@ public class MemberManageVO {
 	private String sexdstn_code;
 	private String email_adres;
 	private Date sbscrb_de;
+	private String moblphon_no;
 
 	public int getList_no() {
 		return list_no;
@@ -147,6 +148,14 @@ public class MemberManageVO {
 
 	public void setSbscrb_de(Date sbscrb_de) {
 		this.sbscrb_de = sbscrb_de;
+	}
+
+	public String getMoblphon_no() {
+		return moblphon_no;
+	}
+
+	public void setMoblphon_no(String moblphon_no) {
+		this.moblphon_no = moblphon_no;
 	}
 
 }

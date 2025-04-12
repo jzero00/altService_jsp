@@ -89,13 +89,22 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void registMemberManageByExcel(List<MemberManageVO> list) throws SQLException {
-		for(MemberManageVO vo : list) {
-			String id = vo.getEmplyr_id();
-			/*중복체크후 insert*/
+		for(int i = 0; i < list.size(); i++) {
+			String id = list.get(i).getEmplyr_id();
 			int count = mMapper.selectCheckDupleId(id);
-			if(count == 0) {
-				mMapper.insertMemberManage(vo);
+			
+			if(id != "" && count == 0) {
+				mMapper.insertMemberManage(list.get(i));
 			}
 		}
+		/*for(MemberManageVO vo : list) {
+			String id = vo.getEmplyr_id();
+			System.out.println(id);
+			중복체크후 insert
+			int count = mMapper.selectCheckDupleId(id);
+			if(vo.getEmplyr_id() != "" && count == 0) {
+				mMapper.insertMemberManage(vo);
+			}
+		}*/
 	}
 }

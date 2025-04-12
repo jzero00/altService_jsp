@@ -33,20 +33,25 @@
 <!-- 		(#{emplyr_id}, #{user_nm}, #{password}, #{password_hint}, -->
 <!-- 		#{password_cnsr}, #{area_no}, #{sexdstn_code}, #{email_adres} -->
 <!-- 		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, 'r', now()) -->
-		
-		
 		INSERT INTO altservice.comtnemplyrinfo
-		(EMPLYR_ID,  USER_NM, PASSWORD,   SEXDSTN_CODE,   HOUSE_ADRES, PASSWORD_HINT, PASSWORD_CNSR, HOUSE_END_TELNO, AREA_NO, DETAIL_ADRES, ZIP,   EMAIL_ADRES,  HOUSE_MIDDLE_TELNO,   EMPLYR_STTUS_CODE,   SBSCRB_DE, DELETE_AT)
+		(EMPLYR_ID, USER_NM, PASSWORD, SEXDSTN_CODE, HOUSE_ADRES,
+		 PASSWORD_HINT, PASSWORD_CNSR, HOUSE_END_TELNO, AREA_NO, DETAIL_ADRES, ZIP, 
+		 EMAIL_ADRES,  HOUSE_MIDDLE_TELNO,  MOBLPHON_NO, EMPLYR_STTUS_CODE, SBSCRB_DE, DELETE_AT,
+		 EMPL_NO)
 		VALUES 
-		(#{emplyr_id}, #{user_nm}, #{password}, #{sexdstn_code}, #{house_adres}, #{password_hint}, #{password_cnsr}, #{house_end_telno}, #{area_no}, #{detail_adres}, #{zip}, #{email_adres}, #{house_middle_telno}, 'r', now(), 'n')
+		(#{emplyr_id}, #{user_nm}, #{password}, #{sexdstn_code}, #{house_adres}, 
+		 #{password_hint}, #{password_cnsr}, #{house_end_telno}, #{area_no}, #{detail_adres}, #{zip},
+		 #{email_adres}, #{house_middle_telno}, #{moblphon_no}, 'r', now(), 'n',
+		 (SELECT COALESCE(COUNT(*) + 1,1) as empl_no FROM altservice.comtnemplyrinfo c)
+		)
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
-		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, IF(c.EMPLYR_STTUS_CODE = 'a', '승인', IF(c.EMPLYR_STTUS_CODE = 'r', '신청','')) AS emplyr_sttus_code, c.SBSCRB_DE
+		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, IF(c.EMPLYR_STTUS_CODE = 'a', '승인', IF(c.EMPLYR_STTUS_CODE = 'r', '신청','')) AS emplyr_sttus_code, c.SBSCRB_DE, c.MOBLPHON_NO
 		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE DELETE_AT = 'n'	<include refid="search" />)) r, altservice.comtnemplyrinfo c
 		WHERE DELETE_AT = 'n'
 		<include refid="search" />
-		ORDER BY c.SBSCRB_DE DESC
+		ORDER BY c.sbscrb_de DESC, c.empl_no DESC
 		LIMIT #{perPageNum} OFFSET #{offset}
 	</select>
 
