@@ -10,6 +10,11 @@
 		document.memberVO.action = "<c:url value="/sys/memberModView.do"/>";
 		memberVO.submit();
 	}
+	
+	function listMenu(){
+		document.memberVO.action = "<c:url value="/sys/memberManage.do"/>";
+		memberVO.submit();
+	}
 </script>
 </head>
 <body>
@@ -60,7 +65,8 @@
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											${vo.area_no } - ${vo.house_middle_telno } - ${vo.house_end_telno }
+<%-- 											${vo.area_no } - ${vo.house_middle_telno } - ${vo.house_end_telno } --%>
+											${vo.moblphon_no }
 										</div>
 									</div>
 								</div>
@@ -112,8 +118,9 @@
 									<label for="emplyr_sttus_code" class="col-form-label">회원상태</label>
 								</div>
 								<div class="col-9">
+<%-- 									${vo.emplyr_sttus_code } --%>
 									<c:if test="${vo.emplyr_sttus_code eq 'a' }">승인</c:if>
-									<c:if test="${vo.emplyr_sttus_code eq 'n' }">미승인</c:if>
+									<c:if test="${vo.emplyr_sttus_code eq 'r' }">미승인</c:if>
 								</div>
 							</div>
 						</div>

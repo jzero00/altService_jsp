@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
@@ -27,7 +28,7 @@ public class ExcelController {
 	private MemberService mService;
 
 	@PostMapping("/insertMember.do")
-	public void insertMemberExcel(MultipartFile excelFile) throws IOException {
+	public ModelAndView insertMemberExcel(ModelAndView mnv, MultipartFile excelFile) throws IOException {
 		/*엑셀파일 처리 */
 		Workbook workbook = new HSSFWorkbook(excelFile.getInputStream());
 		Sheet worksheet = workbook.getSheetAt(0);
@@ -70,13 +71,19 @@ public class ExcelController {
 			list.add(vo);
 		}
 		
+		String url = "";
 		/*중복체크는 service에서 처리 insert*/
 		try {
 			mService.registMemberManageByExcel(list);
+			url = "/alert";
+			mnv.addObject("url", "/sys/memberManage.do");
+			mnv.addObject("result", "사용자 등록 완료");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			url = "/505error.page";
 		}
-		
+		mnv.setViewName(url);
+		return mnv;
 	}
 }

@@ -78,7 +78,8 @@
 								<div class="col-9">
 									<div class="col-12">
 										<div class="form-group row">
-											<input type="text" class="form-control" name="area_no" style="width: 100px;" value="${vo.area_no }"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;" value="${vo.house_middle_telno }"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;" value="${vo.house_end_telno }">
+<%-- 											<input type="text" class="form-control" name="area_no" style="width: 100px;" value="${vo.area_no }"> - <input type="text" class="form-control" name="house_middle_telno" style="width: 100px;" value="${vo.house_middle_telno }"> - <input type="text" class="form-control" name="house_end_telno" style="width: 100px;" value="${vo.house_end_telno }"> --%>
+											<input type="text" class="form-control" name="moblphon_no" value="${vo.moblphon_no }">
 										</div>
 									</div>
 								</div>
@@ -132,7 +133,7 @@
 								<div class="col-9">
 									<select class="form-control" id="emplyrSttusCode" name="emplyr_sttus_code">
 										<option value="">상태(전체)</option>
-										<option value="r" <c:if test="${vo.emplyr_sttus_code eq 'r'}">selected</c:if>>신청</option>
+<%-- 										<option value="r" <c:if test="${vo.emplyr_sttus_code eq 'r'}">selected</c:if>>신청</option> --%>
 										<option value="a" <c:if test="${vo.emplyr_sttus_code eq 'a'}">selected</c:if>>승인</option>
 										<option value="e" <c:if test="${vo.emplyr_sttus_code eq 'e'}">selected</c:if>>만료</option>
 										<option value="n" <c:if test="${vo.emplyr_sttus_code eq 'n'}">selected</c:if>>미승인</option>

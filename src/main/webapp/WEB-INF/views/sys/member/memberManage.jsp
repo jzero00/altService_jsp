@@ -47,6 +47,9 @@
 									<button type="button" class="btn bg-gradient-primary" onclick="searchMember(); return false;">조회</button>
 								</div>
 								<div class="btn-group">
+									<button type="button" class="btn bg-gradient-primary" onclick="resetMember(); return false;">초기화</button>
+								</div>
+								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary" onclick="deleteMember(); return false;">삭제</button>
 								</div>
 								<div class="btn-group">
@@ -123,6 +126,10 @@ function searchMember(){
 	
 	document.memberManageVO.action = "<c:url value='/sys/memberManage.do'/>";
 	memberManageVO.submit();
+}
+
+function resetMember(){
+	location.href= "<c:url value='/sys/memberManage.do'/>";
 }
 
 function search_list_go(pageNo){
