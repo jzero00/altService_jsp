@@ -7,7 +7,7 @@
 <title>Diebock</title>
 <%-- <%@ include file="/WEB-INF/views/include/head.jsp"%> --%>
 <script>
-	function insertMenuList() {
+	function registMenu() {
 		document.menuManageVO.action = "<c:url value='/sys/menuRegView.do'/>";
 		menuManageVO.submit();
 	}
@@ -15,6 +15,11 @@
 	function menuManageMod(e) {
 		document.menuManageVO.action = "<c:url value='/sys/menuModView.do'/>";
 		document.menuManageVO.querySelector("input[id=menu_no]").value = e.id;
+		menuManageVO.submit();
+	}
+	
+	function registMenuExcel(){
+		document.menuManageVO.action = "<c:url value='/sys/menuRegExcelView.do'/>";
 		menuManageVO.submit();
 	}
 </script>
@@ -40,10 +45,10 @@
 									<button type="button" class="btn bg-gradient-primary">조회</button>
 								</div>
 								<div class="btn-group">
-									<button type="button" class="btn bg-gradient-primary">일괄등록</button>
+									<button type="button" class="btn bg-gradient-primary" onclick="registMenuExcel(); return false;">일괄등록</button>
 								</div>
 								<div class="btn-group">
-									<button type="button" class="btn bg-gradient-primary" onclick="insertMenuList(); return false;">등록</button>
+									<button type="button" class="btn bg-gradient-primary" onclick="registMenu(); return false;">등록</button>
 								</div>
 								<div class="btn-group">
 									<button type="button" class="btn bg-gradient-primary">삭제</button>
@@ -56,23 +61,23 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th style="width: 10px"><input type="checkbox"></th>
-						<th>메뉴 No</th>
-						<th>메뉴 한글명</th>
-						<th>프로그램 파일 명</th>
-						<th>메뉴설명</th>
-						<th>상위메뉴No</th>
+						<th  class="text-center" style="width: 10px"><input type="checkbox"></th>
+						<th  class="text-center">메뉴 No</th>
+						<th  class="text-center">메뉴 한글명</th>
+						<th  class="text-center">프로그램 파일 명</th>
+						<th  class="text-center">메뉴설명</th>
+						<th  class="text-center">상위메뉴No</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list }" var="list">
 						<tr id="${list.menu_no }" onclick="menuManageMod(this); return false;">
-							<td><input type="checkbox"></td>
-							<td>${list.menu_no }</td>
-							<td>${list.menu_nm }</td>
-							<td>${list.progrm_file_nm }</td>
-							<td>${list.menu_dc }</td>
-							<td>${list.upper_menu_no }</td>
+							<td  class="text-center"><input type="checkbox"></td>
+							<td  class="text-center">${list.menu_no }</td>
+							<td  class="text-center">${list.menu_nm }</td>
+							<td  class="text-center">${list.progrm_file_nm }</td>
+							<td  class="text-center">${list.menu_dc }</td>
+							<td  class="text-center">${list.upper_menu_no }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

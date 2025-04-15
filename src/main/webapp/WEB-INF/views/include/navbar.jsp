@@ -5,27 +5,14 @@
 <meta charset="UTF-8">
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
-// 		let dropdownMenus = document.querySelectorAll("ul.navbar-nav > li.nav-item.dropdown");
-// 		dropdownMenus.forEach(function(e) {
-// 			e.addEventListener("click", function(el) {
-// 				el.srcElement.classList.add("show");
-// 				el.srcElement.nextElementSibling.classList.add("show")
-// 			});
-// 		});
-
-		let openedDropMenus = document.querySelectorAll("ul.navbar-nav > li.nav-item.dropdown show");
-		console.log(openedDropMenus);
-// 		openedDropMenus.addEventListener("click", function(el) {
-// 			el.srcElement.classList.remove("show");
-// 			el.srcElement.nextElementSibling.classList.remove("show");
-// 		});
+		
 	});
 </script>
 </head>
 <body>
 	<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
 		<div class="container">
-			<a href="../../index3.html" class="navbar-brand"> <!--         <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --> <span class="brand-text font-weight-light">Diebok System</span>
+			<a href="../../index3.html" class="navbar-brand"><!-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --><span class="brand-text font-weight-light">Diebok System</span>
 			</a>
 
 			<button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +26,7 @@
 					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
 					<li class="nav-item dropdown"><a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">시스템관리</a>
 						<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-							<li><a href="#" class="dropdown-item">메뉴관리</a></li>
+							<li><a href="/sys/menuManage.do" class="dropdown-item">메뉴관리</a></li>
 							<li><a href="/sys/memberManage.do" class="dropdown-item">사용자관리</a></li>
 							<li class="dropdown-divider"></li>
 							<!-- Level two dropdown-->
