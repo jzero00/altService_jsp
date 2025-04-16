@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,6 +64,26 @@ public class MenuManageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return mnv;
+	}
+	
+	@PostMapping("menuModDtl.do")
+	public ModelAndView menuModDtl(ModelAndView mnv, String menu_no) {
+		String url = rootPath + "menuManageDtl" + tilesSuffix;
+		Map<String,Object> dataMap = null;
+		Map<String,Object> paramMap = new HashMap<>();
+		
+		paramMap.put("menu_no", menu_no);
+		
+		try {
+			dataMap = mService.getMenuManageDetail(paramMap);
+			mnv.addAllObjects(dataMap);
+			mnv.setViewName(url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return mnv;
 	}
 	

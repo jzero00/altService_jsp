@@ -12,8 +12,8 @@
 		menuManageVO.submit();
 	}
 
-	function menuManageMod(e) {
-		document.menuManageVO.action = "<c:url value='/sys/menuModView.do'/>";
+	function menuManageDtl(e) {
+		document.menuManageVO.action = "<c:url value='/sys/menuModDtl.do'/>";
 		document.menuManageVO.querySelector("input[id=menu_no]").value = e.id;
 		menuManageVO.submit();
 	}
@@ -71,7 +71,7 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list }" var="list">
-						<tr id="${list.menu_no }" onclick="menuManageMod(this); return false;">
+						<tr id="${list.menu_no }" onclick="menuManageDtl(this); return false;">
 							<td  class="text-center"><input type="checkbox"></td>
 							<td  class="text-center">${list.menu_no }</td>
 							<td  class="text-center">${list.menu_nm }</td>
