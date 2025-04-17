@@ -19,7 +19,7 @@
 	}
 	
 	function registMenuExcel(){
-		document.menuManageVO.action = "<c:url value='/sys/menuRegExcelView.do'/>";
+		document.menuManageVO.action = "<c:url value='/sys/registMenuExcelView.do'/>";
 		menuManageVO.submit();
 	}
 </script>

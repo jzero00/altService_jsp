@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UtilDownload {
 	
 	@GetMapping("/memberManageExcel.do")
-	public void downloadMemberManageExcel(HttpServletResponse response) throws IOException {
+	public void downloadMemberManageExcel(HttpServletResponse res) throws IOException {
 		Workbook workbook = new HSSFWorkbook();
 		Sheet sheet = workbook.createSheet("사용자 등록 명단");
 		int rowNo = 0;
@@ -50,10 +50,42 @@ public class UtilDownload {
 			headerCell.setCellStyle(cellStyle);			
 		}
 		
-		response.setContentType("application/vnd.ms-excel");
-		response.setHeader("Content-Disposition", "attachment;filename=registUser.xls");
+		res.setContentType("application/vnd.ms-excel");
+		res.setHeader("Content-Disposition", "attachment;filename=registUser.xls");
 		
-		workbook.write(response.getOutputStream());
+		workbook.write(res.getOutputStream());
+        workbook.close();
+	}
+	
+	@GetMapping("/menuManageExcel.do")
+	public void downloadMenuManageExcel(HttpServletResponse res) throws IOException {
+		Workbook workbook = new HSSFWorkbook();
+		Sheet sheet = workbook.createSheet("메뉴 등록 명단");
+		int rowNo = 0;
+		
+		CellStyle cellStyle = workbook.createCellStyle();
+		
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+		
+		Row headerRow = sheet.createRow(rowNo++);
+		List<String> headerList = new ArrayList<>();
+		headerList.add("메뉴 No");
+		headerList.add("메뉴 순서");
+		headerList.add("메뉴 명");
+		headerList.add("상위메뉴 No");
+		headerList.add("메뉴설명");
+		
+		for(int i = 0; i < headerList.size(); i++) {
+			Cell headerCell = headerRow.createCell(i);
+			headerCell.setCellValue(headerList.get(i));
+			headerCell.setCellStyle(cellStyle);			
+		}
+		
+		res.setContentType("application/vnd.ms-excel");
+		res.setHeader("Content-Disposition", "attachment;filename=registUser.xls");
+		
+		workbook.write(res.getOutputStream());
         workbook.close();
 	}
 }

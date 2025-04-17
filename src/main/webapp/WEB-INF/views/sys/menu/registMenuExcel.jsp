@@ -11,11 +11,11 @@
 		<div class="container-fluid">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h3 class="card-title">엑셀일괄등록</h3>
+					<h3 class="card-title">메뉴 관리 엑셀일괄등록</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form id="frm" name="frm" method="post" action="/excel/insertMember.do" enctype="multipart/form-data">
+				<form id="frm" name="frm" method="post" action="/excel/insertMenu.do" enctype="multipart/form-data">
 					<div class="card-body">
 						<div class="form-group">
 							<label for="exampleInputFile">엑셀 등록</label>

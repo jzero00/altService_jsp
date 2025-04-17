@@ -142,4 +142,11 @@ public class MenuManageController {
 		}
 		return mnv;
 	}
+	
+	@RequestMapping("registMenuExcelView.do")
+	public ModelAndView registMenuExcelView(ModelAndView mnv) {
+		String url = rootPath + "registMenuExcel" + tilesSuffix;
+		mnv.setViewName(url);
+		return mnv;
+	}
 }
