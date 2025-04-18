@@ -83,7 +83,7 @@ public class UtilDownload {
 		}
 		
 		res.setContentType("application/vnd.ms-excel");
-		res.setHeader("Content-Disposition", "attachment;filename=registUser.xls");
+		res.setHeader("Content-Disposition", "attachment;filename=registMenu.xls");
 		
 		workbook.write(res.getOutputStream());
         workbook.close();

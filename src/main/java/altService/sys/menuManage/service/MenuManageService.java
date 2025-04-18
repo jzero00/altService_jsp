@@ -15,5 +15,7 @@ public interface MenuManageService {
 	public Map<String, Object> getMenuManageDetail(Map<String, Object> paramMap) throws SQLException;
 
 	public void modifyMenuManage(Map<String, Object> paramMap) throws SQLException;
+
+	public void registMenuByExcel(List<MenuManageVO> list) throws SQLException;
 	
 }

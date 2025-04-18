@@ -19,13 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
+import altService.sys.menuManage.service.MenuManageService;
+import altService.sys.menuManage.service.MenuManageVO;
 
 @RequestMapping("/excel")
 @Controller
 public class ExcelController {
 	
 	@Autowired
-	private MemberService mService;
+	private MemberService memberService;
+	
+	@Autowired
+	private MenuManageService menuService;
 
 	@PostMapping("/insertMember.do")
 	public ModelAndView insertMemberExcel(ModelAndView mnv, MultipartFile excelFile) throws IOException {
@@ -74,7 +79,7 @@ public class ExcelController {
 		String url = "";
 		/*중복체크는 service에서 처리 insert*/
 		try {
-			mService.registMemberManageByExcel(list);
+			memberService.registMemberManageByExcel(list);
 			url = "/alert";
 			mnv.addObject("url", "/sys/memberManage.do");
 			mnv.addObject("result", "사용자 등록 완료");
@@ -86,4 +91,50 @@ public class ExcelController {
 		mnv.setViewName(url);
 		return mnv;
 	}
+
+	@PostMapping("/registMenu.do")
+	public ModelAndView registMenuExcel(ModelAndView mnv, MultipartFile excelFile) throws IOException{
+		Workbook workbook = new HSSFWorkbook(excelFile.getInputStream());
+		Sheet worksheet = workbook.getSheetAt(0);
+		
+		List<MenuManageVO> list = new ArrayList<>();
+		
+		for(int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
+			MenuManageVO vo = new MenuManageVO();
+			
+			DataFormatter formatter = new DataFormatter();
+			Row row = worksheet.getRow(i);
+			
+			String menu_no = formatter.formatCellValue(row.getCell(0));
+			int menu_ordr = Integer.parseInt(formatter.formatCellValue(row.getCell(1)));
+			String menu_nm = formatter.formatCellValue(row.getCell(2));
+			int upper_menu_no = Integer.parseInt(formatter.formatCellValue(row.getCell(3)));
+			String menu_dc = formatter.formatCellValue(row.getCell(4));
+			
+			vo.setMenu_no(menu_no);
+			vo.setMenu_ordr(menu_ordr);
+			vo.setMenu_nm(menu_nm);
+			vo.setUpper_menu_no(upper_menu_no);
+			vo.setMenu_dc(menu_dc);
+			
+			list.add(vo);
+		}
+		
+		String url = "";
+		
+		try {
+			menuService.registMenuByExcel(list);
+			url = "/alert";
+			mnv.addObject("url", "/sys/menuManage.do");
+			mnv.addObject("result", "메뉴 등록 완료");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
 }

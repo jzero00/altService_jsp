@@ -61,4 +61,11 @@ public class MenuManageServiceImpl implements MenuManageService {
 		mMapper.updateMenuManage(vo);
 	}
 
+	@Override
+	public void registMenuByExcel(List<MenuManageVO> list) throws SQLException {
+		for(int i = 0; i < list.size(); i++) {
+			mMapper.insertMenuManage(list.get(i));
+		}
+	}
+
 }
