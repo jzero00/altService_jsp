@@ -34,6 +34,14 @@
 		menu_no = #{menu_no}
 	</select>
 	
+	<select id="selectMenuManageDetailForCheck" parameterType="menuManage" resultType="int">
+		SELECT COUNT(*)	
+		FROM altservice.comtnmenuinfo
+		WHERE 1=1
+		AND menu_no = #{menu_no}
+		AND menu_nm = #{menu_nm}
+	</select>
+	
 	<update id="updateMenuManage" parameterType="menuManage">
 		UPDATE altservice.comtnmenuinfo
 		SET

@@ -64,8 +64,24 @@ public class MenuManageServiceImpl implements MenuManageService {
 	@Override
 	public void registMenuByExcel(List<MenuManageVO> list) throws SQLException {
 		for(int i = 0; i < list.size(); i++) {
-			mMapper.insertMenuManage(list.get(i));
+			String menu_nm = list.get(i).getMenu_nm();
+			String menu_no = list.get(i).getMenu_no();
+			
+			boolean flag = true;
+			flag = checkDupleMenuInfo(list.get(i));
+			if(flag) {
+				mMapper.insertMenuManage(list.get(i));				
+			}
+			
 		}
+	}
+
+	private boolean checkDupleMenuInfo(MenuManageVO vo) throws SQLException {
+		boolean flag = true;
+		int cnt = 0;
+		cnt = mMapper.selectMenuManageDetailForCheck(vo);
+		if (cnt >= 1) flag = false;
+		return flag;
 	}
 
 }

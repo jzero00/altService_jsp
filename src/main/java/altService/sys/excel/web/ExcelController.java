@@ -32,6 +32,7 @@ public class ExcelController {
 	@Autowired
 	private MenuManageService menuService;
 
+	@SuppressWarnings("resource")
 	@PostMapping("/insertMember.do")
 	public ModelAndView insertMemberExcel(ModelAndView mnv, MultipartFile excelFile) throws IOException {
 		/*엑셀파일 처리 */
@@ -92,6 +93,7 @@ public class ExcelController {
 		return mnv;
 	}
 
+	@SuppressWarnings("resource")
 	@PostMapping("/registMenu.do")
 	public ModelAndView registMenuExcel(ModelAndView mnv, MultipartFile excelFile) throws IOException{
 		Workbook workbook = new HSSFWorkbook(excelFile.getInputStream());
@@ -131,7 +133,6 @@ public class ExcelController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		mnv.setViewName(url);
 		return mnv;
