@@ -191,7 +191,7 @@ public class MemberController {
 	
 	@PostMapping("/memberDelete.do")
 	public ModelAndView memberDelete(ModelAndView mnv, String id) {
-		String url = "alert";
+		String url = "/alert";
 		String redirectUrl = "/sys/memberManage.do";
 		
 		try {
