@@ -85,6 +85,9 @@
 			<form name="menuManageVO" action="<c:url value='/sys/menuRegView.do' />" method="post">
 				<input type="hidden" id="menu_no" name="menu_no" value="">
 			</form>
+			<ul class="pagination m-0 justify-content-center">
+				<%@include file="/WEB-INF/views/include/pagination.jsp" %>
+			</ul>
 		</div>
 	</section>
 </body>

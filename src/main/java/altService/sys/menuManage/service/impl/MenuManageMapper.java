@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import altService.sys.menuManage.service.MenuManageVO;
+import altService.utils.SearchCriteria;
 
 @Repository("MenuManageMapper")
 public interface MenuManageMapper {
@@ -16,12 +17,14 @@ public interface MenuManageMapper {
 	
 	public List<MenuManageVO> selectUpperMenuNoByMenuNm(String keyword) throws SQLException;
 	
-	public List<MenuManageVO> selectMenuList() throws SQLException;
+	public List<MenuManageVO> selectMenuList(SearchCriteria cri) throws SQLException;
 	
 	public MenuManageVO selectMenuManageDetail(String menu_no) throws SQLException;
 
 	public void updateMenuManage(MenuManageVO vo) throws SQLException;
 
 	public int selectMenuManageDetailForCheck(MenuManageVO vo) throws SQLException;
+	
+	public int selectMenuManageListCnt(SearchCriteria cri) throws SQLException;
 	
 }

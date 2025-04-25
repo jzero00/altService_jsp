@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,16 @@ function upperMenuNoSearch(){
 					<th>프로그램파일명</th>
 					<th>프로그램명</th>
 				</tr>
+				<c:forEach items="${list }" var="list">
+				<tr>
+					<td>${list.menu_nm }</td>
+					<td>${list.menu_dc }</td>
+				</tr>
+				</c:forEach>
 			</table>
+			<ul class="pagination m-0 justify-content-center">
+				<%@include file="/WEB-INF/views/include/pagination.jsp" %>
+			</ul>
 		</div>
 	</section>
 </body>

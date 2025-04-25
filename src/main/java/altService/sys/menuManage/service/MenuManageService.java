@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import altService.utils.SearchCriteria;
+
 public interface MenuManageService {
 
-	public Map<String,Object> getMenuMangeList() throws SQLException;
+	public Map<String,Object> getMenuMangeList(SearchCriteria cri) throws SQLException;
 	
 	public void registMenuManage(Map<String,Object> paramMap) throws SQLException;
 	

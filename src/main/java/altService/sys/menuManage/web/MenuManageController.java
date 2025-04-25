@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import altService.sys.menuManage.service.MenuManageService;
 import altService.sys.menuManage.service.MenuManageVO;
+import altService.utils.SearchCriteria;
 
 @Controller
 @RequestMapping("/sys/")
@@ -25,17 +26,13 @@ public class MenuManageController {
 	@Autowired
 	private MenuManageService mService;
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping("menuManage.do")
-	public ModelAndView menuManage(ModelAndView mnv) {
+	public ModelAndView menuManage(ModelAndView mnv, SearchCriteria cri) {
 		String url = rootPath + "menuManage" + tilesSuffix;
 		Map<String,Object> dataMap = null;
 		try {
-			dataMap = mService.getMenuMangeList();
-			List<MenuManageVO> list = null;
-			
-			list = (List<MenuManageVO>) dataMap.get("list");
-			mnv.addObject("list", list);
+			dataMap = mService.getMenuMangeList(cri);
+			mnv.addAllObjects(dataMap);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -88,8 +85,19 @@ public class MenuManageController {
 	}
 	
 	@RequestMapping("upperMenuNoSearchView.do")
-	public ModelAndView upperMenuNoSearchView(ModelAndView mnv) {
+	public ModelAndView upperMenuNoSearchView(ModelAndView mnv, SearchCriteria cri) {
 		String url = rootPath + "upperMenuNoSearch";
+		
+		Map<String,Object> dataMap = null;
+		
+		try {
+			dataMap = mService.getMenuMangeList(cri);
+			mnv.addAllObjects(dataMap);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		mnv.setViewName(url);
 		return mnv;
 	}

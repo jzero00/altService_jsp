@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import altService.sys.menuManage.service.MenuManageService;
 import altService.sys.menuManage.service.MenuManageVO;
+import altService.utils.PageMaker;
+import altService.utils.SearchCriteria;
 
 @Service
 public class MenuManageServiceImpl implements MenuManageService {
@@ -18,13 +20,21 @@ public class MenuManageServiceImpl implements MenuManageService {
 	private MenuManageMapper mMapper;
 
 	@Override
-	public Map<String, Object> getMenuMangeList() throws SQLException {
+	public Map<String, Object> getMenuMangeList(SearchCriteria cri) throws SQLException {
 		Map<String, Object> dataMap = new HashMap<>();
 		List<MenuManageVO> menuList = null;
+		int totalCount = 0;
 		
-		menuList = mMapper.selectMenuList();
+		menuList = mMapper.selectMenuList(cri);
+		totalCount = mMapper.selectMenuManageListCnt(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(totalCount);
 		
 		dataMap.put("list", menuList);
+		dataMap.put("cri", cri);
+		dataMap.put("pageMaker", pageMaker);
 		
 		return dataMap;
 	}
