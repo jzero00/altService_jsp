@@ -6,13 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import altService.sys.member.service.MemberManageVO;
-import altService.sys.member.service.MemberVO;
 import altService.utils.SearchCriteria;
 
 @Repository("MemberMapper")
 public interface MemberMapper {
 	
-	public MemberManageVO login(MemberVO vo) throws SQLException;
+	public MemberManageVO login(MemberManageVO vo) throws SQLException;
 
 	public void insertMemberManage(MemberManageVO vo) throws SQLException;
 	
@@ -27,5 +26,9 @@ public interface MemberMapper {
 	public int selectCheckDupleId(String id) throws SQLException;
 
 	public void updateMemberManage(MemberManageVO vo) throws SQLException;
+	
+	public void updateMemberLockCnt(String emplyr_id) throws SQLException;
+	
+	public int selectMemberLockCnt(String emplyr_id) throws SQLException;
 	
 }

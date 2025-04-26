@@ -21,6 +21,7 @@ public class MemberManageVO {
 	private String email_adres;
 	private Date sbscrb_de;
 	private String moblphon_no;
+	private int lock_cnt;
 
 	public int getList_no() {
 		return list_no;
@@ -156,6 +157,14 @@ public class MemberManageVO {
 
 	public void setMoblphon_no(String moblphon_no) {
 		this.moblphon_no = moblphon_no;
+	}
+
+	public int getLock_cnt() {
+		return lock_cnt;
+	}
+
+	public void setLock_cnt(int lock_cnt) {
+		this.lock_cnt = lock_cnt;
 	}
 
 }

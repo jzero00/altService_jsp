@@ -16,11 +16,11 @@
 		</if>
 	</sql>
 	
-	<select id="login" parameterType="member" resultType="memberManage">
+	<select id="login" parameterType="memberManage" resultType="memberManage">
 		SELECT *
 		FROM altservice.comtnemplyrinfo
-		WHERE emplyr_id = #{altNo}
-		AND password = #{pwd}
+		WHERE emplyr_id = #{emplyr_id}
+		AND password = #{password}
 	</select>
 
 	<insert id="insertMemberManage" parameterType="memberManage">
@@ -34,14 +34,14 @@
 <!-- 		#{password_cnsr}, #{area_no}, #{sexdstn_code}, #{email_adres} -->
 <!-- 		#{house_middle_telno}, #{house_end_telno}, #{house_adres}, #{zip}, 'r', now()) -->
 		INSERT INTO altservice.comtnemplyrinfo
-		(EMPLYR_ID, USER_NM, PASSWORD, SEXDSTN_CODE, HOUSE_ADRES,
-		 PASSWORD_HINT, PASSWORD_CNSR, HOUSE_END_TELNO, AREA_NO, DETAIL_ADRES, ZIP, 
-		 EMAIL_ADRES,  HOUSE_MIDDLE_TELNO,  MOBLPHON_NO, EMPLYR_STTUS_CODE, SBSCRB_DE, DELETE_AT,
-		 EMPL_NO)
+		(emplyr_id, user_nm, password, sexdstn_code, house_adres,
+		 password_hint, password_cnsr, house_end_telno, area_no, detail_adres, zip, 
+		 email_adres,  house_middle_telno,  moblphon_no, emplyr_sttus_code, sbscrb_de, delete_at, lock_cnt,
+		 empl_no)
 		VALUES 
 		(#{emplyr_id}, #{user_nm}, #{password}, #{sexdstn_code}, #{house_adres}, 
 		 #{password_hint}, #{password_cnsr}, #{house_end_telno}, #{area_no}, #{detail_adres}, #{zip},
-		 #{email_adres}, #{house_middle_telno}, #{moblphon_no}, 'n', now(), 'n',
+		 #{email_adres}, #{house_middle_telno}, #{moblphon_no}, 'n', now(), 'n', 0,
 		 (SELECT COALESCE(COUNT(*) + 1,1) as empl_no FROM altservice.comtnemplyrinfo c)
 		)
 	</insert>
@@ -94,4 +94,16 @@
 		emplyr_sttus_code = #{emplyr_sttus_code}
 		WHERE emplyr_id = #{emplyr_id}
 	</update>
+	
+	<update id="updateMemberLockCnt" parameterType="str">
+		UPDATE altservice.comtnemplyrinfo
+		SET lock_cnt = lock_cnt + 1
+		WHERE emplyr_id = #{emplyr_id}
+	</update>
+	
+	<select id="selectMemberLockCnt" parameterType="str" resultType="int">
+		SELECT lock_cnt
+		FROM altservice.comtnemplyrinfo
+		WHERE emplyr_id = #{emplyr_id}
+	</select>
 </mapper>

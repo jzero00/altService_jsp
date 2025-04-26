@@ -61,10 +61,10 @@ body {
 <!--   <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 <!--   <h1 class="h3 mb-3 font-weight-normal">로그인해주십시오</h1> -->
   <label for="name" class="sr-only">이름</label>
-  <input type="text" id="usid" name="altNo" class="form-control" placeholder="이름을 입력해주세요" required="" autofocus="">
+  <input type="text" id="usid" name="emplyr_id" class="form-control" placeholder="이름을 입력해주세요" required="" autofocus="">
   <label for="password" class="sr-only">Password</label>
   <input type="password" id="password" class="form-control" placeholder="Password" required="">
-  <input type="hidden"  name="pwd" id="postPassword">
+  <input type="hidden"  name="password" id="postPassword">
 <!--   <div class="checkbox mb-3"> -->
 <!--     <label> -->
 <!--       <input type="checkbox" value="remember-me"> Remember me -->

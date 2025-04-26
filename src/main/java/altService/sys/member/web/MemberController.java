@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
-import altService.sys.member.service.MemberVO;
 import altService.utils.SearchCriteria;
 
 
@@ -42,7 +41,7 @@ public class MemberController {
 	}
 
 	@PostMapping("/login.do")
-	public ModelAndView postLogin(ModelAndView mnv, MemberVO vo, HttpServletRequest req) {
+	public ModelAndView postLogin(ModelAndView mnv, MemberManageVO vo, HttpServletRequest req) {
 
 		MemberManageVO loginUser = null;
 		try {
@@ -52,11 +51,15 @@ public class MemberController {
 			String url = rootView + "loginSuccess";
 			mnv.setViewName(url);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (LoginFailException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			String url = "/alert";
+			String message = e.getMessage();
+
+			mnv.addObject("url", "/sys/login.do");
+			mnv.addObject("result", message);
+			mnv.setViewName(url);
+			e.getMessage();
 		}
 
 		if (loginUser != null)

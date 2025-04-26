@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import altService.exception.LoginFailException;
 import altService.sys.member.service.MemberManageVO;
 import altService.sys.member.service.MemberService;
-import altService.sys.member.service.MemberVO;
 import altService.utils.PageMaker;
 import altService.utils.SearchCriteria;
 
@@ -22,10 +21,20 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mMapper;
 	
 	@Override
-	public MemberManageVO login(MemberVO vo) throws SQLException, LoginFailException {
+	public MemberManageVO login(MemberManageVO vo) throws SQLException, LoginFailException {
 		MemberManageVO member = null;
 		member = mMapper.login(vo);
-		System.out.println(member.toString());
+		
+		/* 로그인 실패시 잠금회수 추가하기 */
+		if(member == null) {
+			mMapper.updateMemberLockCnt(vo.getEmplyr_id());
+			int lockCnt = mMapper.selectMemberLockCnt(vo.getEmplyr_id());
+			if(lockCnt < 5) {
+				throw new LoginFailException("ID와 PW를 다시 입력해주십시오. 로그인 시도 회수 : " + lockCnt + "/5회 오류입니다. 5번 이상 로그인 오류시 계정이 잠깁니다.");				
+			} else {
+				throw new LoginFailException("잠겨진 계정입니다. 관리자에게 문의하십시오.");				
+			}
+		}
 		
 		return member;
 	}
