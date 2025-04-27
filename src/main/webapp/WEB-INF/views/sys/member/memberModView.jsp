@@ -137,6 +137,7 @@
 										<option value="a" <c:if test="${vo.emplyr_sttus_code eq 'a'}">selected</c:if>>승인</option>
 										<option value="e" <c:if test="${vo.emplyr_sttus_code eq 'e'}">selected</c:if>>만료</option>
 										<option value="n" <c:if test="${vo.emplyr_sttus_code eq 'n'}">selected</c:if>>미승인</option>
+										<option <c:if test="${vo.lock_cnt >= 5 }">selected</c:if>>잠김</option>
 									</select>
 								</div>
 							</div>

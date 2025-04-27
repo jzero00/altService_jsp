@@ -47,9 +47,9 @@
 	</insert>
 
 	<select id="selectMemberManageList" parameterType="cri"	resultType="memberManage">
-		SELECT @RNUM:=@RNUM-1 AS list_no, c.EMPLYR_ID, c.ORGNZT_ID, c.USER_NM, c.EMAIL_ADRES, c.AREA_NO, c.HOUSE_MIDDLE_TELNO, c.HOUSE_END_TELNO, IF(c.EMPLYR_STTUS_CODE = 'a', '승인', IF(c.EMPLYR_STTUS_CODE = 'n', '미승인','')) AS emplyr_sttus_code, c.SBSCRB_DE, c.MOBLPHON_NO
-		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE DELETE_AT = 'n'	<include refid="search" />)) r, altservice.comtnemplyrinfo c
-		WHERE DELETE_AT = 'n'
+		SELECT @RNUM:=@RNUM-1 AS list_no, c.emplyr_id, c.orgnzt_id, c.user_nm, c.email_adres, c.area_no, c.house_middle_telno, c.house_end_telno, IF(c.lock_cnt >= 5,'잠김', IF(c.emplyr_sttus_code = 'n', '미승인', IF(c.emplyr_sttus_code = 'a', '승인',''))) AS emplyr_sttus_code, c.sbscrb_de, c.moblphon_no
+		FROM (SELECT @RNUM:=(SELECT COUNT(*) - #{offset} + 1 FROM altservice.comtnemplyrinfo WHERE delete_at = 'n'	<include refid="search" />)) r, altservice.comtnemplyrinfo c
+		WHERE delete_at = 'n'
 		<include refid="search" />
 		ORDER BY c.sbscrb_de DESC, c.empl_no DESC
 		LIMIT #{perPageNum} OFFSET #{offset}
@@ -58,7 +58,7 @@
 	<select id="selectMemberManageListCnt" parameterType="cri" resultType="int">
 		SELECT COUNT(*) as cnt
 		FROM altservice.comtnemplyrinfo
-		WHERE DELETE_AT = 'n'
+		WHERE delete_at = 'n'
 		<include refid="search" />
 	</select>
 
