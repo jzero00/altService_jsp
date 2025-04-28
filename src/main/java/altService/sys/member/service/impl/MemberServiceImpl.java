@@ -93,6 +93,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void modifyMemberManage(Map<String, Object> paramMap) throws SQLException {
 		MemberManageVO vo = (MemberManageVO) paramMap.get("vo");
+		/* 승인시 로그인 실패 횟수 초기화 */
+		if(vo.getEmplyr_sttus_code().equals("a")) {
+			vo.setLock_cnt(0);
+		}
 		mMapper.updateMemberManage(vo);
 	}
 

@@ -91,7 +91,8 @@
 		house_end_telno = #{house_end_telno},
 		email_adres = #{email_adres},
 		detail_adres = #{detail_adres},
-		emplyr_sttus_code = #{emplyr_sttus_code}
+		emplyr_sttus_code = #{emplyr_sttus_code},
+		lock_cnt = #{lock_cnt}
 		WHERE emplyr_id = #{emplyr_id}
 	</update>
 	
