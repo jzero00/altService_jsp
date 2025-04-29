@@ -93,9 +93,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void modifyMemberManage(Map<String, Object> paramMap) throws SQLException {
 		MemberManageVO vo = (MemberManageVO) paramMap.get("vo");
-		/* 승인시 로그인 실패 횟수 초기화 */
-		if(vo.getEmplyr_sttus_code().equals("a")) {
+		/* 초기화시 로그인 실패 횟수 초기화 */
+		if(vo.getEmplyr_sttus_code().equals("i")) {
 			vo.setLock_cnt(0);
+			vo.setPassword("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
+			vo.setPassword_cnsr("");
+			vo.setPassword_hint("");
 		}
 		mMapper.updateMemberManage(vo);
 	}
