@@ -27,10 +27,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		/* 로그인 실패시 잠금회수 추가하기 */
 		if(member == null) {
-			mMapper.updateMemberLockCnt(vo.getEmplyr_id());
 			int lockCnt = mMapper.selectMemberLockCnt(vo.getEmplyr_id());
 			if(lockCnt < 5) {
-				throw new LoginFailException("ID와 PW를 다시 입력해주십시오. 로그인 시도 회수 : " + lockCnt + "/5회 오류입니다. 5번 이상 로그인 오류시 계정이 잠깁니다.");				
+				mMapper.updateMemberLockCnt(vo.getEmplyr_id());
+				throw new LoginFailException("ID와 PW를 다시 입력해주십시오.\\n로그인 시도 회수 : " + lockCnt + "/5회 오류입니다. 5번 이상 로그인 오류시 계정이 잠깁니다.");				
 			} else {
 				throw new LoginFailException("잠겨진 계정입니다. 관리자에게 문의하십시오.");				
 			}
