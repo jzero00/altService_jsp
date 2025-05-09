@@ -62,9 +62,6 @@ public class MemberController {
 			e.getMessage();
 		}
 
-		if (loginUser != null)
-			System.out.println("로그인 성공");
-
 		return mnv;
 	}
 

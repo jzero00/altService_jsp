@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <script>
-	alert("로그인 성공");
+// 	alert("로그인 성공");
 	location.href="/main.do"
 </script>
 </head>
